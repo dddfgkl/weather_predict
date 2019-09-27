@@ -2,7 +2,7 @@ import torch
 import h5py
 import os
 from netCDF4 import Dataset
-from model.readNctoh5 import readNC
+# from model.readNctoh5 import readNC
 
 
 fileName1 = "../data/CN-Reanalysis2017101907.nc"
@@ -14,8 +14,6 @@ dir_path = "/home/machong/PM25-work/CPC_global/temp"
 # desc a single nc file
 def desc_single_ncFile(fileName):
     nc_obj = Dataset(fileName)
-    print("nc keys: ", nc_obj.variables)
-    print("-------")
     print("nc variable keys ", nc_obj.variables.keys())
     keys = nc_obj.variables.keys()
     for key in keys:
@@ -54,8 +52,19 @@ def readH5(h5path, f):
 
 def desc_all_ncFile(dir_path):
     files = os.listdir(dir_path)
+    all_available_files = []
     for file in files:
+        if file == "README":
+            continue
+        all_available_files.append(file)
         print(file, type(file))
+
+    for file in all_available_files:
+        print("-------file Name--------")
+        desc_single_nc_detail(os.path.join(dir_path, file))
+        print("\n\n")
+    print("sum of the nc file ", len(all_available_files))
+    print("over ")
 
 
 def main():
@@ -69,7 +78,7 @@ def main():
     readNc2h5(savepth, filepth, f)
     '''
     # readH5(dataPath, f="CN-Reanalysis2017101907.h5")
-    desc_all_ncFile(dir_path)
+    #desc_all_ncFile(dir_path)
     print("main thread over")
 
 if __name__ == '__main__':
