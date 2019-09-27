@@ -22,6 +22,7 @@ def desc_single_ncFile(fileName):
             print("length is bigger than one, ", len(nc_obj.variables[key][:].shape))
             continue
         print(nc_obj.variables[key][:10])
+    nc_obj.close()
 
 
 def desc_single_nc_detail(fileName):
@@ -63,7 +64,7 @@ def desc_all_ncFile(dir_path):
         print(file, type(file))
 
     for file in all_available_files:
-        print("-------file Name--------")
+        print("-------file Name--------", file)
         desc_single_ncFile(os.path.join(dir_path, file))
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
