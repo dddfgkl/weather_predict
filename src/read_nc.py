@@ -18,6 +18,9 @@ def desc_single_ncFile(fileName):
     keys = nc_obj.variables.keys()
     for key in keys:
         print(key, nc_obj.variables[key][:].shape)
+        if len(nc_obj.variables[key][:].shape) > 1:
+            print("length is bigger than one, ", len(nc_obj.variables[key][:].shape))
+            continue
         print(nc_obj.variables[key][:10])
 
 
