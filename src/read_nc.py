@@ -8,7 +8,8 @@ from model.readNctoh5 import readNC
 fileName1 = "../data/CN-Reanalysis2017101907.nc"
 fileName2 = "../data/tmax.1981.nc"
 bin_file = ""
-dataPath = "../data"
+dataPath = ""
+dir_path = "/home/machong/PM25-work/CPC_global/temp"
 
 # desc a single nc file
 def desc_single_ncFile(fileName):
@@ -34,6 +35,7 @@ def desc_single_nc_detail(fileName):
     print("latitude degree", latitude[:10])
     print("longitude degree", longitude[:10])
 
+
 def readNc2h5(savepth, filepth, f):
     # data = readNC(path)
     h5file = h5py.File(os.path.join(savepth, f[:-3] + '.h5'), 'w')
@@ -49,6 +51,12 @@ def readH5(h5path, f):
     print(testSet, type(testSet))
     dataset = readFile[f[:-3]][:]
     print(dataset.shape, type(dataset))
+
+def desc_all_ncFile(dir_path):
+    files = os.listdir(dir_path)
+    for file in files:
+        print(file, type(file))
+
 
 def main():
     # desc_sinle_ncFile(fileName1)
