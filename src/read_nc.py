@@ -60,7 +60,7 @@ def desc_all_ncFile(dir_path):
 
 def main():
     # desc_sinle_ncFile(fileName1)
-    desc_single_ncFile(fileName2)
+    # desc_single_ncFile(fileName2)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
@@ -69,6 +69,7 @@ def main():
     readNc2h5(savepth, filepth, f)
     '''
     # readH5(dataPath, f="CN-Reanalysis2017101907.h5")
+    desc_all_ncFile(dir_path)
     print("main thread over")
 
 if __name__ == '__main__':
