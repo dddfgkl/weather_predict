@@ -61,7 +61,7 @@ def desc_all_ncFile(dir_path):
 
     for file in all_available_files:
         print("-------file Name--------")
-        desc_single_nc_detail(os.path.join(dir_path, file))
+        desc_single_ncFile(os.path.join(dir_path, file))
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
@@ -78,7 +78,7 @@ def main():
     readNc2h5(savepth, filepth, f)
     '''
     # readH5(dataPath, f="CN-Reanalysis2017101907.h5")
-    #desc_all_ncFile(dir_path)
+    desc_all_ncFile(dir_path)
     print("main thread over")
 
 if __name__ == '__main__':
