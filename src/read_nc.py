@@ -12,7 +12,7 @@ dataPath = ""
 dir_path = "/home/machong/PM25-work/CPC_global/temp"
 
 # desc a single nc file
-def desc_single_ncFile(fileName):
+def desc_single_ncFile(fileName, wanted_key="tmax"):
     nc_obj = Dataset(fileName)
     print("nc variable keys ", nc_obj.variables.keys())
     keys = nc_obj.variables.keys()
@@ -22,7 +22,9 @@ def desc_single_ncFile(fileName):
             print("length is bigger than one, ", len(nc_obj.variables[key][:].shape))
             continue
         print(nc_obj.variables[key][:10])
+    data = nc_obj.variables[wanted_key][:]
     nc_obj.close()
+    return data
 
 
 def desc_single_nc_detail(fileName):
@@ -66,14 +68,16 @@ def desc_all_ncFile(dir_path):
     all_available_files = sorted(all_available_files)
     for file in all_available_files:
         print("-------file Name--------", file)
-        desc_single_ncFile(os.path.join(dir_path, file))
+        data = desc_single_ncFile(os.path.join(dir_path, file))
+        if file == "tmax.1981.nc":
+            print(data[0][:10][:10])
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
 
 
 def main():
-    # desc_sinle_ncFile(fileName1)
+    # desc_single_ncFile(fileName1)
     # desc_single_ncFile(fileName2)
     # desc_single_nc_detail(fileName2)
     '''
