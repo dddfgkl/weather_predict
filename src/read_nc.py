@@ -63,6 +63,7 @@ def desc_all_ncFile(dir_path):
         all_available_files.append(file)
         print(file, type(file))
     sorted(all_available_files)
+    print(all_available_files)
     for file in all_available_files:
         print("-------file Name--------", file)
         desc_single_ncFile(os.path.join(dir_path, file))
