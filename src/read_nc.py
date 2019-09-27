@@ -70,7 +70,8 @@ def desc_all_ncFile(dir_path):
         print("-------file Name--------", file)
         data = desc_single_ncFile(os.path.join(dir_path, file))
         if file == "tmax.1981.nc":
-            print(data[0][:10][:10])
+            a = data[0][0][0]
+            print("xxxxxxx  ", a)
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
