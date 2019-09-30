@@ -22,7 +22,9 @@ def desc_single_ncFile(fileName, wanted_key="tmax"):
             print("length is bigger than one, ", len(nc_obj.variables[key][:].shape))
             continue
         print(nc_obj.variables[key][:10])
-    data = nc_obj.variables[wanted_key][:]
+    data = []
+    if wanted_key in nc_obj.variables.keys():
+        data = nc_obj.variables[wanted_key][:].data
     nc_obj.close()
     return data
 
@@ -78,7 +80,8 @@ def desc_all_ncFile(dir_path):
 
 
 def main():
-    # desc_single_ncFile(fileName1)
+    data = desc_single_ncFile(fileName1, "pm25")
+    print(data)
     # desc_single_ncFile(fileName2)
     # desc_single_nc_detail(fileName2)
     '''
@@ -88,7 +91,7 @@ def main():
     readNc2h5(savepth, filepth, f)
     '''
     # readH5(dataPath, f="CN-Reanalysis2017101907.h5")
-    desc_all_ncFile(dir_path)
+    # desc_all_ncFile(dir_path)
     print("main thread over")
 
 if __name__ == '__main__':
