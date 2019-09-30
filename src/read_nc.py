@@ -1,6 +1,7 @@
 import torch
 import h5py
 import os
+import numpy as np
 from netCDF4 import Dataset
 # from model.readNctoh5 import readNC
 
@@ -92,7 +93,9 @@ def is_leap_year(year):
 
 # 从原始CPC的nc数据中，抽取对应天数，拼接各个年份数据组织成(经度X纬度X天数X年份)的h5数据存储
 def extract_year_from_nc_to_h5(dir_path, store_path):
-    #f = h5py.File(store_path, 'w')
+    if dir_path == None or store_path == None:
+        raise FileExistsError
+    f = h5py.File(store_path, 'w')
     files = os.listdir(dir_path)
     all_available_files = []
     for file in files:
@@ -106,17 +109,15 @@ def extract_year_from_nc_to_h5(dir_path, store_path):
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
         data, lat, lon, time = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
-        #if i == 0:
-            #f["lat"] =lat
-            #f["lon"] = lon
+        if i == 0:
+            f["lat"] =lat
+            f["lon"] = lon
         data = data[-301:-121, :, :].transpose(2, 1, 0)
-        print(data.shape)
-
-
-
-
-
-
+        h5_data.append(data)
+    h5_data = np.array(h5_data)
+    f["tmax"] = h5_data
+    print("h5_data shape is : ", h5_data.shape)
+    f.close()
 
 
 def sum_month_day():
