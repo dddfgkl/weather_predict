@@ -33,9 +33,9 @@ def bilinear_interpolation(x, y, points):
             q22 * (x - x1) * (y - y1)
            ) / ((x2 - x1) * (y2 - y1) + 0.0)
 
-def extract_data_from_h5(bin_file_path):
+def extract_data_from_h5():
     bin_data = read_ctl.read_bin_to_numpy()
     print("data shape, ", bin_data.shape)
 
 if __name__ == '__main__':
-    pass
+    extract_data_from_h5()
