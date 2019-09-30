@@ -78,13 +78,16 @@ def desc_all_ncFile(dir_path):
     print("sum of the nc file ", len(all_available_files))
     print("over ")
 
+# 判断是否是闰年
 def is_leap_year(year):
     if year % 100 == 0:
         if year % 400 == 0:
             return True
         else:
             return False
-    if year % 4 ==
+    if year % 4 == 0:
+        return True
+    return False
 
 
 def main():
