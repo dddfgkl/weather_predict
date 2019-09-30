@@ -12,7 +12,7 @@ bin_file = ""
 dataPath = ""
 dir_path = "/home/machong/PM25-work/CPC_global/temp"
 
-store_path = "/home/machong/PM25-work/Hind3_data/180day_data.h5"
+store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
