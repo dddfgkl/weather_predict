@@ -1,8 +1,8 @@
 import numpy as np
 from collections import namedtuple
 
-fileName = "../data/Hind3_daily/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
-ens_mean_file = "../data/Hind3_daily/ens_mean.ctl"
+fileName = "/home/machong/PM25-work/Hind3_daily/predict_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
+ens_mean_file = "/home/machong/PM25-work/Hind3_daily/ens_mean.ctl"
 
 def read_from_ctl(fileName):
     if fileName is None:
