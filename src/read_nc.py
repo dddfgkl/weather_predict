@@ -109,8 +109,9 @@ def extract_year_from_nc_to_h5(dir_path, store_path):
         #if i == 0:
             #f["lat"] =lat
             #f["lon"] = lon
-        data = data[-301:-121, :, :]
+        data = data[-301:-121, :, :].transpose(2, 1, 0)
         print(data.shape)
+
 
 
 
