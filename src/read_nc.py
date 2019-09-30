@@ -13,6 +13,7 @@ dataPath = ""
 dir_path = "/home/machong/PM25-work/CPC_global/temp"
 
 store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
+store_path2 = "/home/datanfs/macong_data/100day_data.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
@@ -114,6 +115,8 @@ def extract_year_from_nc_to_h5(dir_path, store_path):
         if i == 0:
             f["lat"] =lat
             f["lon"] = lon
+
+        # 3月5日到9月1日，从后向前避免处理闰年，纬度转换成经度X纬度X天数
         data = data[-301:-121, :, :].transpose(2, 1, 0)
         h5_data.append(data)
     h5_data = np.array(h5_data)
@@ -121,12 +124,18 @@ def extract_year_from_nc_to_h5(dir_path, store_path):
     print("h5_data shape is : ", h5_data.shape)
     f.close()
 
-
-def sum_month_day():
-    print(sum(month_day[3:9])-3)
+# 测试h5文件写入结果
+def desc_single_h5_file(h5_file_path):
+    if os.path.exists(h5_file_path) == False:
+        raise FileExistsError
+    f = h5py.File(h5_file_path, 'r')
+    print(f.keys())
+    for key in f.keys():
+        print(key, f[key].shape)
+    print("desc over all keys")
 
 def unit_test():
-    extract_year_from_nc_to_h5(dir_path, store_path)
+    extract_year_from_nc_to_h5(dir_path, store_path2)
 
 def main():
     unit_test()
