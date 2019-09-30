@@ -135,7 +135,8 @@ def desc_single_h5_file(h5_file_path):
     print("desc over all keys")
 
 def unit_test():
-    extract_year_from_nc_to_h5(dir_path, store_path2)
+    # extract_year_from_nc_to_h5(dir_path, store_path2)'
+    desc_single_h5_file(store_path2)
 
 def main():
     unit_test()
