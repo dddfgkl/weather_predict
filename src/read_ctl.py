@@ -131,6 +131,11 @@ class Grds:
         plt.colorbar()
         plt.savefig(name + ".png")
 
+def read_bin_to_numpy():
+    f = Grds(ens_mean_file, fileName)
+    data = f.read("tmax")
+    return data
+
 def main():
     read_from_ctl(fileName)
     a = Grds(ens_mean_file, fileName)

@@ -1,4 +1,7 @@
 import os
+import read_ctl
+
+# bin_file_path = "/home/datanfs/macong_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
 
 def bilinear_interpolation(x, y, points):
     '''Interpolate (x,y) from values associated with four points.
@@ -30,6 +33,9 @@ def bilinear_interpolation(x, y, points):
             q22 * (x - x1) * (y - y1)
            ) / ((x2 - x1) * (y2 - y1) + 0.0)
 
+def extract_data_from_h5(bin_file_path):
+    bin_data = read_ctl.read_bin_to_numpy()
+    print("data shape, ", bin_data.shape)
 
 if __name__ == '__main__':
     pass
