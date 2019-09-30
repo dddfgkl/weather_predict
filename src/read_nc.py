@@ -10,9 +10,11 @@ fileName2 = "../data/tmax.1981.nc"
 bin_file = ""
 dataPath = ""
 dir_path = "/home/machong/PM25-work/CPC_global/temp"
+# 闰年
+month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
 # desc a single nc file
-def desc_single_ncFile(fileName, wanted_key="tmax"):
+def desc_single_ncFile(fileName, wantedKeys):
     nc_obj = Dataset(fileName)
     print("nc variable keys ", nc_obj.variables.keys())
     keys = nc_obj.variables.keys()
@@ -23,8 +25,10 @@ def desc_single_ncFile(fileName, wanted_key="tmax"):
             continue
         print(nc_obj.variables[key][:10].data)
     data = []
-    if wanted_key in nc_obj.variables.keys():
-        data = nc_obj.variables[wanted_key][:].data
+    if wantedKeys != None:
+        for key in wantedKeys:
+            if key in nc_obj.variables.keys():
+                data.append(nc_obj.variables[key][:].data)
     nc_obj.close()
     return data
 
@@ -68,12 +72,9 @@ def desc_all_ncFile(dir_path):
         print(file, type(file))
     sorted(all_available_files)
     all_available_files = sorted(all_available_files)
-    for file in all_available_files:
+    for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
-        data = desc_single_ncFile(os.path.join(dir_path, file))
-        if file == "tmax.1981.nc":
-            a = data[0][0][0]
-            print("xxxxxxx  ", a)
+        datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
@@ -89,8 +90,42 @@ def is_leap_year(year):
         return True
     return False
 
+# 从原始CPC的nc数据中，抽取对应天数，拼接各个年份数据组织成(经度X纬度X天数X年份)的h5数据存储
+def extract_year_from_nc_to_h5(dir_path, store_path):
+    #f = h5py.File(store_path, 'w')
+    files = os.listdir(dir_path)
+    all_available_files = []
+    for file in files:
+        if file == "README":
+            continue
+        all_available_files.append(file)
+        print(file, type(file))
+    sorted(all_available_files)
+    all_available_files = sorted(all_available_files)
+    h5_data = []
+    for i, file in enumerate(all_available_files):
+        print("-------file Name--------", file)
+        data, lat, lon, time = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
+        #if i == 0:
+            #f["lat"] =lat
+            #f["lon"] = lon
+        data = data[-301:-121, :, :]
+        print(data.shape)
+
+
+
+
+
+
+
+def sum_month_day():
+    print(sum(month_day[3:9])-3)
+
+def unit_test():
+    extract_year_from_nc_to_h5(dir_path)
 
 def main():
+    unit_test()
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
     # desc_single_ncFile(fileName2)
@@ -102,7 +137,7 @@ def main():
     readNc2h5(savepth, filepth, f)
     '''
     # readH5(dataPath, f="CN-Reanalysis2017101907.h5")
-    desc_all_ncFile(dir_path)
+    # desc_all_ncFile(dir_path)
     print("main thread over")
 
 if __name__ == '__main__':
