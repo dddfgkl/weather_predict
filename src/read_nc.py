@@ -2,7 +2,7 @@ import torch
 import h5py
 import os
 from netCDF4 import Dataset
-# from model.readNctoh5 import readNC
+from model.readNctoh5 import readNC
 
 
 fileName1 = "../data/CN-Reanalysis2017101907.nc"
@@ -77,6 +77,14 @@ def desc_all_ncFile(dir_path):
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
+
+def is_leap_year(year):
+    if year % 100 == 0:
+        if year % 400 == 0:
+            return True
+        else:
+            return False
+    if year % 4 ==
 
 
 def main():
