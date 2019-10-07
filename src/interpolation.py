@@ -65,8 +65,8 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
                 cpc_x -= 1
             while cpc_y < len(cpc_latitude) and cpc_latitude[cpc_y] < latitude:
                 cpc_y += 1
-            if cpc_x == len(cpc_longitude):
-                print("error: x is equal longitude")
+            if cpc_x == len(cpc_longitude) or cpc_x == 0:
+                print("error: x is equal longitude or is 0")
                 print("now longitude :", longitude)
                 print("longitude array : ", cpc_longitude)
                 return
