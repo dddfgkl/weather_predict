@@ -92,10 +92,15 @@ def read_data_from_file(h5_file_path, store_file_path):
     print(f.keys())
     for key in f.keys():
         print(key, f[key].shape)
-    cpc_data = f["tmax"]
-    cpc_data = np.array(cpc_data).transpose(1,2,3,0)
-    cpc_longitude = f["lon"]
-    cpc_latitude = f["lat"]
+    cpc_data = f["tmax"][:].transpose(1,2,3,0)
+    cpc_longitude = f["lon"][:]
+    cpc_latitude = f["lat"][:]
+    print("read h5 raw file , basic info: ")
+    print("cpc_data shape ", cpc_data.shape)
+    print("cpc longitude shape ", cpc_latitude.shape)
+    print("cpc latitude shape ", cpc_latitude.shape)
+    if True:
+        return
     extract_data = extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude)
     f_store["cpc"] = extract_data
     f_store.close()
