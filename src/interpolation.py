@@ -93,7 +93,7 @@ def read_data_from_file(h5_file_path, store_file_path):
     for key in f.keys():
         print(key, f[key].shape)
     cpc_data = f["tmax"]
-
+    cpc_data = np.array(cpc_data).transpose(1,2,3,0)
     cpc_longitude = f["lon"]
     cpc_latitude = f["lat"]
     extract_data = extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude)
