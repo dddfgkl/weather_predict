@@ -99,8 +99,6 @@ def read_data_from_file(h5_file_path, store_file_path):
     print("cpc_data shape ", cpc_data.shape)
     print("cpc longitude shape ", cpc_latitude.shape)
     print("cpc latitude shape ", cpc_latitude.shape)
-    if True:
-        return
     extract_data = extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude)
     f_store["cpc"] = extract_data
     f_store.close()
