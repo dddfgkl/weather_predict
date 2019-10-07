@@ -14,6 +14,7 @@ dir_path = "/home/machong/PM25-work/CPC_global/temp"
 
 store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
 store_path2 = "/home/datanfs/macong_data/100day_data.h5"
+store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
@@ -136,7 +137,7 @@ def desc_single_h5_file(h5_file_path):
 
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
-    desc_single_h5_file(store_path2)
+    desc_single_h5_file(store_file_path3)
 
 def main():
     unit_test()
