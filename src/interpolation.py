@@ -5,7 +5,7 @@ import read_ctl
 
 # bin_file_path = "/home/datanfs/macong_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
 h5_file_path = "/home/datanfs/macong_data/100day_data.h5"
-store_file_path = "/home/datanfs/macong_data/180day_everyday_data.h5"
+store_file_path = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
 
 
 def bilinear_interpolation(x, y, points):
@@ -43,7 +43,7 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
     # cpc_data and bin_data should be trim
     # the core of the extraction, find the axis
     """
-    :param cpc_data: 720x160x365x32(longitude x latitude x day x year)
+    :param cpc_data: 720x160x180x32(longitude x latitude x day x year)
     # :param bin_data: 87x54x180x32(longitude x latitude x day x year)
     :param cpc_longitude: longitude 720
     :param cpc_latitude: latitude 87
@@ -92,6 +92,7 @@ def read_data_from_file(h5_file_path, store_file_path):
     for key in f.keys():
         print(key, f[key].shape)
     cpc_data = f["tmax"]
+
     cpc_longitude = f["lon"]
     cpc_latitude = f["lat"]
     extract_data = extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude)
