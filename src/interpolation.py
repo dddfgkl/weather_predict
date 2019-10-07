@@ -49,8 +49,8 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
     :param cpc_latitude: latitude 87
     :return:
     """
-    cpc_x = 0
-    cpc_y = 0
+    cpc_x = 720-1
+    cpc_y = 360-1
 
     longitude = 59.0625 - 1.40625
     latitude = -14.88189 - 1.417
@@ -61,10 +61,10 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
         print("87 longtitude: ", longitude)
         for j in range(54):
             latitude += 1.417
-            while cpc_x < len(cpc_longitude) and cpc_longitude[cpc_x] < longitude:
-                cpc_x += 1
-            while cpc_y < len(cpc_latitude) and cpc_latitude[cpc_y] < latitude:
-                cpc_y += 1
+            while cpc_x >= 0 and cpc_longitude[cpc_x] < longitude:
+                cpc_x -= 1
+            while cpc_y >= 0 and cpc_latitude[cpc_y] < latitude:
+                cpc_y -= 1
             if cpc_x == len(cpc_longitude):
                 print("error: x is equal longitude")
                 print("now longitude :", longitude)
@@ -109,6 +109,8 @@ def read_data_from_file(h5_file_path, store_file_path):
     print("cpc_data shape ", cpc_data.shape)
     print("cpc longitude shape ", cpc_longitude.shape)
     print("cpc latitude shape ", cpc_latitude.shape)
+    print("cpc longitude", cpc_longitude)
+    print("cpc_latitude", cpc_latitude)
     extract_data = extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude)
     f_store["cpc"] = extract_data
     f_store.close()
