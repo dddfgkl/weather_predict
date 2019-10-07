@@ -65,6 +65,16 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
                 cpc_x += 1
             while cpc_y < len(cpc_latitude) and cpc_latitude[cpc_y] < latitude:
                 cpc_y += 1
+            if cpc_x == len(cpc_longitude):
+                print("error: x is equal longitude")
+                print("now longitude :", longitude)
+                print("longitude array : ", cpc_longitude)
+                return
+            if cpc_y == len(cpc_latitude):
+                print("error: y is equal latitude")
+                print("now latitude : ", latitude)
+                print("latitude array : ", cpc_latitude)
+                return
             d_array = []
             for d in range(180):
                 y_array = []
@@ -97,7 +107,7 @@ def read_data_from_file(h5_file_path, store_file_path):
     cpc_latitude = f["lat"][:]
     print("read h5 raw file , basic info: ")
     print("cpc_data shape ", cpc_data.shape)
-    print("cpc longitude shape ", cpc_latitude.shape)
+    print("cpc longitude shape ", cpc_longitude.shape)
     print("cpc latitude shape ", cpc_latitude.shape)
     extract_data = extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude)
     f_store["cpc"] = extract_data
