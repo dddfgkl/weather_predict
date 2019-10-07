@@ -51,8 +51,8 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
     :param cpc_latitude: latitude 87
     :return:
     """
-    cpc_x = 720-1
-    cpc_y = 0
+    cpc_x = 0
+    cpc_y = 360-1
 
     longitude = 59.0625 - 1.40625
     latitude = -14.88189 - 1.417
@@ -63,10 +63,10 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
         print("87 longtitude: ", longitude)
         for j in range(54):
             latitude += 1.417
-            while cpc_x > 0 and cpc_longitude[cpc_x] < longitude:
-                cpc_x -= 1
-            while cpc_y < len(cpc_latitude) and cpc_latitude[cpc_y] < latitude:
-                cpc_y += 1
+            while cpc_x < len(cpc_longitude) and cpc_longitude[cpc_x] < longitude:
+                cpc_x += 1
+            while cpc_y > 0 and cpc_latitude[cpc_y] < latitude:
+                cpc_y -= 1
             if cpc_x == len(cpc_longitude) or cpc_x == 0:
                 print("error: x is equal longitude or is 0")
                 print("now longitude :", longitude)
