@@ -4,6 +4,9 @@ import numpy as np
 import read_ctl
 
 # bin_file_path = "/home/datanfs/macong_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
+h5_file_path = "/home/datanfs/macong_data/100day_data.h5"
+store_file_path = "/home/datanfs/macong_data/180day_everyday_data.h5"
+
 
 def bilinear_interpolation(x, y, points):
     '''Interpolate (x,y) from values associated with four points.
@@ -103,4 +106,5 @@ def read_data_from_file(h5_file_path, store_file_path):
     """
 
 if __name__ == '__main__':
-    extract_data_from_h5()
+    read_data_from_file(h5_file_path, store_file_path)
+    # extract_data_from_h5(h5_file_path, store_file_path)
