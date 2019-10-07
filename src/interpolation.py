@@ -58,6 +58,7 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
     for i in range(87):
         longitude += 1.40625
         latitude_array = []
+        print("87 longtitude: ", longitude)
         for j in range(54):
             latitude += 1.417
             while cpc_x < len(cpc_longitude) and cpc_longitude[cpc_x] < longitude:
