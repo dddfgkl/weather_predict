@@ -131,7 +131,7 @@ def desc_single_h5_file(h5_file_path):
     f = h5py.File(h5_file_path, 'r')
     print(f.keys())
     for key in f.keys():
-        print(key, f[key].shape, type(f[key], type(f[key][:])))
+        print(key, f[key].shape, type(f[key]), type(f[key][:]))
     print("desc over all keys")
 
 def unit_test():
