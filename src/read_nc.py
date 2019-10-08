@@ -8,7 +8,7 @@ from netCDF4 import Dataset
 
 fileName1 = "../data/CN-Reanalysis2017101907.nc"
 fileName2 = "../../data/tmax.1981.nc"
-fileName3 = "/home/datanfs/CPC_global/temp/tmax.1981.nc"
+fileName3 = "/home/datanfs/CPC_global/temp/tmax.1982.nc"
 bin_file = ""
 dataPath = ""
 dir_path = "/home/machong/PM25-work/CPC_global/temp"
@@ -154,8 +154,6 @@ def main():
     data = desc_single_ncFile(fileName3, "tmax")
     data = np.array(data)
     print(data.shape)
-    for i in data[0][0]:
-        print(i)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
