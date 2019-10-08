@@ -25,7 +25,7 @@ def transform_nc_2_h5(file_path):
     print(data.shape, type(data))
 
 # desc a single nc file
-def desc_single_ncFile(fileName, wantedKeys):
+def desc_single_ncFile(fileName, wantedKeys=""):
     nc_obj = Dataset(fileName)
     print("nc variable keys ", nc_obj.variables.keys())
     keys = nc_obj.variables.keys()
@@ -36,7 +36,7 @@ def desc_single_ncFile(fileName, wantedKeys):
             continue
         print(nc_obj.variables[key][:10].data)
     data = []
-    if wantedKeys != None:
+    if wantedKeys != None and wantedKeys != "":
         for key in wantedKeys:
             if key in nc_obj.variables.keys():
                 data.append(nc_obj.variables[key][:].data)
