@@ -1,4 +1,5 @@
 import numpy as np
+import h5py
 from collections import namedtuple
 
 fileName = "/home/machong/PM25-work/Hind3_daily/predict_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
@@ -140,11 +141,14 @@ def main():
     read_from_ctl(fileName)
     a = Grds(ens_mean_file, fileName)
     a_out = a.read("tmax")
-    print(a_out.shape)
+    print(a_out.shape, type(a_out))
     single_fram = a_out[:,:,0,0]
     print(single_fram.shape)
     # a.plot_single_frame(single_fram, "single frame show")
     print(single_fram.shape)
+    store_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+    #f_store = h5py.File(store_file_path, 'w')
+    #f_store["bin_label"] =
 
 if __name__ == '__main__':
     main()
