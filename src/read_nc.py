@@ -7,7 +7,8 @@ from netCDF4 import Dataset
 
 
 fileName1 = "../data/CN-Reanalysis2017101907.nc"
-fileName2 = "../data/tmax.1981.nc"
+fileName2 = "../../data/tmax.1981.nc"
+fileName3 = "/home/datanfs/CPC_global/temp/tmax.1981.nc"
 bin_file = ""
 dataPath = ""
 dir_path = "/home/machong/PM25-work/CPC_global/temp"
@@ -144,14 +145,14 @@ def desc_single_h5_file(h5_file_path):
 
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
-    desc_single_h5_file(store_path2)
-    # transform_nc_2_h5(fileName2)
+    # desc_single_h5_file(store_path2)
+    transform_nc_2_h5(fileName2)
 
 def main():
-    unit_test()
+    # unit_test()
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
-    # desc_single_ncFile(fileName2)
+    desc_single_ncFile(fileName3)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
