@@ -153,7 +153,7 @@ def main():
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
     data = desc_single_ncFile(fileName3, "tmax")
-    print(data[0][0][0])
+    print(data.shape)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
