@@ -142,8 +142,8 @@ def desc_single_h5_file(h5_file_path):
 
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
-    # desc_single_h5_file(store_file_path3)
-    transform_nc_2_h5(fileName2)
+    desc_single_h5_file(store_file_path3)
+    # transform_nc_2_h5(fileName2)
 
 def main():
     unit_test()

@@ -87,6 +87,7 @@ def extract_data_from_h5(cpc_data, cpc_longitude, cpc_latitude):
                               (cpc_longitude[cpc_x-1], cpc_latitude[cpc_y], cpc_data[cpc_x-1][cpc_y][d][y]),
                               (cpc_longitude[cpc_x], cpc_latitude[cpc_y+1], cpc_data[cpc_x][cpc_y+1][d][y]),
                               (cpc_longitude[cpc_x], cpc_latitude[cpc_y], cpc_data[cpc_x][cpc_y][d][y]))
+                    print(points)
                     inter_value = bilinear_interpolation(longitude, latitude, points)
                     y_array.append(inter_value)
                 d_array.append(y_array)
