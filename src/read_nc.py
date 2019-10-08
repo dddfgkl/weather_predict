@@ -155,7 +155,7 @@ def main():
     data = np.array(data)
     print(data.shape)
     for i in data[0][0]:
-        print(data[0][0][i])
+        print(i)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
