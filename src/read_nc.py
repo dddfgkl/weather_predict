@@ -153,6 +153,7 @@ def main():
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
     data = desc_single_ncFile(fileName3, "tmax")
+    data = np.array(data)
     print(data.shape)
     # desc_single_nc_detail(fileName2)
     '''
