@@ -18,6 +18,11 @@ store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
+def transform_nc_2_h5(file_path):
+    nc_obj = Dataset(file_path)
+    data = nc_obj.variables["tmax"][:]
+    print(data.shape, type(data))
+
 # desc a single nc file
 def desc_single_ncFile(fileName, wantedKeys):
     nc_obj = Dataset(fileName)
@@ -137,7 +142,8 @@ def desc_single_h5_file(h5_file_path):
 
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
-    desc_single_h5_file(store_file_path3)
+    # desc_single_h5_file(store_file_path3)
+    transform_nc_2_h5(fileName2)
 
 def main():
     unit_test()
