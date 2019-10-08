@@ -138,6 +138,8 @@ def desc_single_h5_file(h5_file_path):
     print(f.keys())
     for key in f.keys():
         print(key, f[key].shape, type(f[key]), type(f[key][:]), f[key][:].shape)
+    data = f["cpc"][:]
+    print(data[0][0])
     print("desc over all keys")
 
 def unit_test():
