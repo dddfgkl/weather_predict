@@ -17,7 +17,9 @@ def construct_data(window = 6):
     raw_data = read_h5(raw_data_file_path, "bin_label")
     print("basic info")
     print("cpc data shape, ", raw_cpc.shape)
+    print(raw_cpc[0][0])
     print("bin data label shape, ", raw_data.shape)
+    print(raw_data[:][:][0][0])
     if True:
         return
     # transpose the data to the shape you want
