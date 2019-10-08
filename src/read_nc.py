@@ -155,8 +155,6 @@ def main():
     # print(data)
     data = desc_single_ncFile(fileName3, "tmax")
     data = np.array(data)
-    for d in data[:][:][:]:
-        print(d)
     print(data.shape)
     # desc_single_nc_detail(fileName2)
     '''
