@@ -11,10 +11,14 @@ def read_h5(file_path, key):
 def construct_data(window = 6):
     # read origin data file
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
-    raw_data_file_path = ""
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "tmax")
-
+    print("basic info")
+    print("cpc data shape, ", raw_cpc.shape)
+    print("bin data label shape, ", raw_data.shape)
+    if True:
+        return
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
     raw_cpc = raw_cpc.transpose()
@@ -97,5 +101,6 @@ def construct_data(window = 6):
     h5val.close()
     # h5test.close()
 
-
+if __name__ == '__main__':
+    construct_data()
 
