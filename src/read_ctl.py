@@ -147,8 +147,9 @@ def main():
     # a.plot_single_frame(single_fram, "single frame show")
     print(single_fram.shape)
     store_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
-    #f_store = h5py.File(store_file_path, 'w')
-    #f_store["bin_label"] =
+    f_store = h5py.File(store_file_path, 'w')
+    f_store["bin_label"] = a_out
+    f_store.close()
 
 if __name__ == '__main__':
     main()
