@@ -33,7 +33,7 @@ def desc_single_ncFile(fileName, wantedKeys=""):
         print(key, nc_obj.variables[key][:].shape)
         if len(nc_obj.variables[key][:].shape) > 1:
             print("length is bigger than one, ", len(nc_obj.variables[key][:].shape))
-            continue
+            # continue
         print(nc_obj.variables[key][:10].data)
     data = []
     if wantedKeys != None and wantedKeys != "":
