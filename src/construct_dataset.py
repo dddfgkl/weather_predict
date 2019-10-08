@@ -4,6 +4,7 @@ import numpy as np
 
 def read_h5(file_path, key):
     if os.path.exists(file_path) == False:
+        print("file not exist")
         raise FileExistsError
     f = h5py.File(file_path, 'r')
     return f[key][:]
