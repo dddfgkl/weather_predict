@@ -156,6 +156,10 @@ def main():
     data = desc_single_ncFile(fileName3, "tmax")
     data = np.array(data)
     print(data.shape)
+    for d in range(365):
+        for lati in range(360):
+            for lon in range(720):
+                print(data[d][lati][lon])
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
