@@ -15,6 +15,7 @@ dir_path = "/home/machong/PM25-work/CPC_global/temp"
 store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
 store_path2 = "/home/datanfs/macong_data/100day_data.h5"
 store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
+fixed_cpc_nc_dir_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
@@ -73,13 +74,15 @@ def desc_all_ncFile(dir_path):
     for file in files:
         if file == "README":
             continue
+        if file[-2:] != "nc":
+            continue
         all_available_files.append(file)
         print(file, type(file))
     sorted(all_available_files)
     all_available_files = sorted(all_available_files)
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
-        datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
+        # datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
@@ -137,7 +140,9 @@ def desc_single_h5_file(h5_file_path):
 
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
-    desc_single_h5_file(store_file_path3)
+    # desc_single_h5_file(store_file_path3)
+    desc_all_ncFile(fixed_cpc_nc_dir_path)
+    print("unit test over!")
 
 def main():
     unit_test()
