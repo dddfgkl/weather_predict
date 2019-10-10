@@ -32,9 +32,8 @@ def desc_single_ncFile(fileName, wantedKeys=None):
         # print(nc_obj.variables[key][:10].data)
     data = []
     if wantedKeys != None:
-        for key in wantedKeys:
-            if key in nc_obj.variables.keys():
-                data.append(nc_obj.variables[key][:].data)
+        if wantedKeys in nc_obj.variables.keys():
+            data.append(nc_obj.variables[wantedKeys][:].data)
     nc_obj.close()
     return data
 
