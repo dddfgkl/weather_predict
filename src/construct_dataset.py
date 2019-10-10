@@ -23,7 +23,7 @@ def construct_data(window = 6):
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
     raw_cpc = raw_cpc.transpose(3,2,1,0)
-    raw_data = raw_data.transpose()
+    # raw_data = raw_data.transpose()
     print(raw_cpc.shape)
     print(raw_data.shape)
     if True:
