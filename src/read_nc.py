@@ -16,6 +16,7 @@ store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
 store_path2 = "/home/datanfs/macong_data/100day_data.h5"
 store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
 fixed_cpc_nc_dir_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax"
+trim_cpc_nc_dir_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
@@ -70,6 +71,7 @@ def readH5(h5path, f):
 def desc_all_ncFile(dir_path):
     files = os.listdir(dir_path)
     all_available_files = []
+    all_data = []
     for file in files:
         if file == "README":
             continue
@@ -82,9 +84,16 @@ def desc_all_ncFile(dir_path):
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
         datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
+        all_data.append(datas)
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
+    return all_data
+
+def store_data_2_h5(store_path, data):
+    h5_file = h5py.File(store_path, 'w')
+    h5_file["cpc"] = np.array(data)
+    h5_file.close()
 
 # 判断是否是闰年
 def is_leap_year(year):
@@ -140,7 +149,8 @@ def desc_single_h5_file(h5_file_path):
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
     # desc_single_h5_file(store_file_path3)
-    desc_all_ncFile(fixed_cpc_nc_dir_path)
+    all_data = desc_all_ncFile(fixed_cpc_nc_dir_path)
+    store_data_2_h5(trim_cpc_nc_dir_path, all_data)
     print("unit test over!")
 
 def main():
