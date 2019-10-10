@@ -20,13 +20,14 @@ def construct_data(window = 6):
     print(raw_cpc[0][0][:][:])
     print("bin data label shape, ", raw_data.shape)
     print(raw_data[:][:][0][0])
-    if True:
-        return
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
-    raw_cpc = raw_cpc.transpose()
+    raw_cpc = raw_cpc.transpose(3,2,1,0)
     raw_data = raw_data.transpose()
-
+    print(raw_cpc.shape)
+    print(raw_data.shape)
+    if True:
+        return
     # state the path to store data
     h5train = h5py.File(r'./train_daqisuo.h5', 'w')
     h5val = h5py.File(r'./valid_daqisuo.h5', 'w')
