@@ -20,7 +20,7 @@ fixed_cpc_nc_dir_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax"
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
 # desc a single nc file
-def desc_single_ncFile(fileName, wantedKeys):
+def desc_single_ncFile(fileName, wantedKeys=None):
     nc_obj = Dataset(fileName)
     print("nc variable keys ", nc_obj.variables.keys())
     keys = nc_obj.variables.keys()
@@ -29,7 +29,7 @@ def desc_single_ncFile(fileName, wantedKeys):
         if len(nc_obj.variables[key][:].shape) > 1:
             print("length is bigger than one, ", len(nc_obj.variables[key][:].shape))
             continue
-        print(nc_obj.variables[key][:10].data)
+        # print(nc_obj.variables[key][:10].data)
     data = []
     if wantedKeys != None:
         for key in wantedKeys:
@@ -82,7 +82,7 @@ def desc_all_ncFile(dir_path):
     all_available_files = sorted(all_available_files)
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
-        # datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
+        datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
