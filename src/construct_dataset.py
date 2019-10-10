@@ -29,13 +29,13 @@ def construct_data(window = 6):
     if True:
         return
     # state the path to store data
-    h5train = h5py.File(r'./train_daqisuo.h5', 'w')
-    h5val = h5py.File(r'./valid_daqisuo.h5', 'w')
+    h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo.h5', 'w')
+    h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo.h5', 'w')
     # h5test = h5py.File(r'./test_daqisuo.h5', 'w')
 
     totol_label_nums = 32 * (180 - window + 1)
-    train_sample_nums = 0
-    val_sample_nums = 0
+    train_sample_nums = 28 * (180 - window + 1)
+    val_sample_nums = 4 * (180 - window + 1)
     # test_sample_nums = 0
 
 
@@ -57,7 +57,7 @@ def construct_data(window = 6):
     train_cn = 0
     val_cn = 0
     test_cn = 0
-    if window % 2 == 0:
+    if window % 2 != 0:
         window = window // 2
         for y in range(32):
             for d in range(window,180-window):
