@@ -83,7 +83,7 @@ def desc_all_ncFile(dir_path):
     all_available_files = sorted(all_available_files)
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
-        datas = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
+        datas = desc_single_ncFile(os.path.join(dir_path, file), "tmax")
         all_data.append(datas)
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
@@ -92,7 +92,9 @@ def desc_all_ncFile(dir_path):
 
 def store_data_2_h5(store_path, data):
     h5_file = h5py.File(store_path, 'w')
-    h5_file["cpc"] = np.array(data)
+    data = np.array(data)
+    print("output data shape", data.shape)
+    h5_file["cpc"] = data
     h5_file.close()
 
 # 判断是否是闰年
@@ -123,7 +125,7 @@ def extract_year_from_nc_to_h5(dir_path, store_path):
     h5_data = []
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
-        data, lat, lon, time = desc_single_ncFile(os.path.join(dir_path, file), ("tmax", "lat", "lon", "time"))
+        data, lat, lon, time = desc_single_ncFile(os.path.join(dir_path, file), "tmax")
         if i == 0:
             f["lat"] =lat
             f["lon"] = lon
