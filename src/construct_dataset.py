@@ -9,6 +9,14 @@ def read_h5(file_path, key):
     f = h5py.File(file_path, 'r')
     return f[key][:]
 
+def fill_cpc_data():
+    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+    raw_cpc = read_h5(raw_cpc_file_path, "cpc")
+    raw_data = read_h5(raw_data_file_path, "bin_label")
+    print("cpc data shape, ", raw_cpc.shape)
+    print("bin data label shape, ", raw_data.shape)
+
 def construct_data(window = 6):
     # read origin data file
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
@@ -106,5 +114,6 @@ def construct_data(window = 6):
     # h5test.close()
 
 if __name__ == '__main__':
-    construct_data()
+    # construct_data()
+    fill_cpc_data()
 
