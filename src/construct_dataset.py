@@ -54,8 +54,8 @@ def construct_data(window = 6):
     print(raw_data[:][:][0][0])
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
-    # raw_cpc = raw_cpc.transpose(3,2,1,0)
-    # raw_data = raw_data.transpose()
+    raw_cpc = raw_cpc.transpose(3,2,0,1)
+    raw_data = raw_data.transpose(3,2,0,1)
     print(raw_cpc.shape)
     print(raw_data.shape)
 
@@ -117,13 +117,13 @@ def construct_data(window = 6):
             print(f"{y}, total 32")
             for d in range(left_window,180-right_window):
                 if train_cn < train_sample_nums:
-                    h5train["data"][train_cn,...] = raw_data[:][:][d-left_window:d+right_window+1][y].transpose(2, 0, 1).reshape(window, 87,54,1)
-                    h5train["label"][train_cn, ...] = raw_cpc[:][:][d][y].transpose(1,2,0).reshape(1,87,54)
+                    h5train["data"][train_cn,...] = raw_data[y][d-left_window:d+right_window+1].reshape(window, 87,54,1)
+                    h5train["label"][train_cn, ...] = raw_cpc[y][d].reshape(1,87,54)
                     train_cn += 1
                     continue
                 if val_cn < val_sample_nums:
-                    h5val["data"][val_cn, ...] = raw_data[:][:][d-left_window:d+right_window+1][y].transpose(2, 0, 1).reshape(window, 87,54,1)
-                    h5val["label"][val_cn, ...] = raw_cpc[:][:][d][y].transpose(1, 2, 0).reshape(1,87,54)
+                    h5val["data"][val_cn, ...] = raw_data[y][d-left_window:d+right_window+1].reshape(window, 87,54,1)
+                    h5val["label"][val_cn, ...] = raw_cpc[y][d].reshape(1,87,54)
                     val_cn += 1
                     continue
                 """
