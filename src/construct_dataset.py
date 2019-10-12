@@ -12,22 +12,24 @@ def read_h5(file_path, key):
 def fill_cpc_data():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+
+    filled_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v1.h5"
+
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
     raw_cpc = raw_cpc.transpose(3,2,1,0)
     print("cpc data shape, ", raw_cpc.shape)
     print("bin data label shape, ", raw_data.shape)
-    print(raw_cpc[0][0])
-    if raw_cpc[0][0][0][0] == 'nan':
-        print("it is nan")
-    if raw_cpc[0][0][0][0] == None:
-        print("it is None")
-    if raw_cpc[0][0][0][0] == False:
-        print("it is false")
-    if raw_cpc[0][0][0][0] == "":
-        print("it is ''")
-    if np.isnan(raw_cpc[0][0][0][0]):
-        print("np is nan")
+    filled_data = np.zeros(raw_cpc.shape)
+    print(filled_data.shape)
+    if True:
+        return
+
+    for y in range(32):
+        for d in range(180):
+            for lat in range(54):
+                for lon in range(87):
+                    if np.isnan(raw_cpc[lon][lat][d][y]):
 
 
 def construct_data(window = 6):
