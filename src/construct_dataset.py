@@ -58,8 +58,7 @@ def construct_data(window = 6):
     # raw_data = raw_data.transpose()
     print(raw_cpc.shape)
     print(raw_data.shape)
-    if True:
-        return
+
     # state the path to store data
     h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo.h5', 'w')
     h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo.h5', 'w')
