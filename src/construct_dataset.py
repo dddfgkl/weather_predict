@@ -30,6 +30,7 @@ def fill_cpc_data():
             for lat in range(54):
                 for lon in range(87):
                     if np.isnan(raw_cpc[lon][lat][d][y]):
+                        pass
 
 
 def construct_data(window = 6):
