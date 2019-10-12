@@ -14,6 +14,7 @@ def fill_cpc_data():
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
+    raw_cpc = raw_cpc.transpose(3,2,1,0)
     print("cpc data shape, ", raw_cpc.shape)
     print("bin data label shape, ", raw_data.shape)
     print(raw_cpc[0][0])
