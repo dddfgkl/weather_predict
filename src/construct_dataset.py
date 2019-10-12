@@ -16,6 +16,7 @@ def fill_cpc_data():
     raw_data = read_h5(raw_data_file_path, "bin_label")
     print("cpc data shape, ", raw_cpc.shape)
     print("bin data label shape, ", raw_data.shape)
+    print(raw_cpc[0][0])
 
 def construct_data(window = 6):
     # read origin data file
