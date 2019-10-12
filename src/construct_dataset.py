@@ -43,7 +43,7 @@ def fill_cpc_data():
 
 def construct_data(window = 6):
     # read origin data file
-    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
+    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v1.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
@@ -138,6 +138,6 @@ def construct_data(window = 6):
     # h5test.close()
 
 if __name__ == '__main__':
-    # construct_data()
-    fill_cpc_data()
+    construct_data()
+    # fill_cpc_data()
 
