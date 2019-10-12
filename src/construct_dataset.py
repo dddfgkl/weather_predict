@@ -17,20 +17,27 @@ def fill_cpc_data():
 
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
+    filled_store = h5py.File(filled_cpc_file_path, 'w')
     raw_cpc = raw_cpc.transpose(3,2,1,0)
     print("cpc data shape, ", raw_cpc.shape)
     print("bin data label shape, ", raw_data.shape)
     filled_data = np.zeros(raw_cpc.shape)
     print(filled_data.shape)
-    if True:
-        return
 
+    how_many_nan = 0
     for y in range(32):
         for d in range(180):
             for lat in range(54):
                 for lon in range(87):
                     if np.isnan(raw_cpc[lon][lat][d][y]):
-                        pass
+                        how_many_nan += 1
+                        filled_data[lon][lat][d][y] = raw_data[lon][lat][d][y]
+                    else:
+                        filled_data[lon][lat][d][y] = raw_cpc[lon][lat][d][y]
+    print("{} nan number, {} total number".format(how_many_nan, 32*180*54*87))
+    filled_data['cpc'] = filled_data
+    print("filled data desc, ", filled_data.shape)
+    print("fill data complected")
 
 
 def construct_data(window = 6):
