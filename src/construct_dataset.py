@@ -92,6 +92,7 @@ def construct_data(window = 6):
     if window % 2 != 0:
         window = window // 2
         for y in range(32):
+            print(f"{y}, total 32")
             for d in range(window,180-window):
                 if train_cn < train_sample_nums:
                     h5train["data"][train_cn,...] = raw_data[:][:][d-window:d+window+1][y].transpose(2, 0, 1).reshape(2*window+1, 87,54,2*window+1,1)
@@ -114,6 +115,7 @@ def construct_data(window = 6):
         left_window = window // 2
         right_window = window // 2 - 1
         for y in range(32):
+            print(f"{y}, total 32")
             for d in range(left_window,180-right_window):
                 if train_cn < train_sample_nums:
                     h5train["data"][train_cn,...] = raw_data[:][:][d-left_window:d+right_window+1][y].transpose(2, 0, 1).reshape(window, 87,54,1)
