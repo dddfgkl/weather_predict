@@ -18,6 +18,10 @@ def fill_cpc_data():
     print("cpc data shape, ", raw_cpc.shape)
     print("bin data label shape, ", raw_data.shape)
     print(raw_cpc[0][0])
+    if raw_cpc[0][0][0][0] == 'nan':
+        print("it is nan")
+    else:
+        print("it is not nan")
 
 def construct_data(window = 6):
     # read origin data file
