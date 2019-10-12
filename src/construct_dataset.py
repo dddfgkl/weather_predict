@@ -10,10 +10,10 @@ def read_h5(file_path, key):
     return f[key][:]
 
 def desc_h5():
-    train_path = '/home/datanfs/macong_data/valid_daqisuo.h5'
+    train_path = '/home/datanfs/macong_data/train_daqisuo.h5'
     valid_path = '/home/datanfs/macong_data/valid_daqisuo.h5'
     train_data = read_h5(train_path, 'data')
-    valid_data = read_h5(valid_path, 'label')
+    valid_data = read_h5(valid_path, 'data')
     print(train_data.shape)
     print(valid_data.shape)
 
