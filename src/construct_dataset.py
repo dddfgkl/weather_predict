@@ -24,6 +24,10 @@ def fill_cpc_data():
         print("it is None")
     if raw_cpc[0][0][0][0] == False:
         print("it is false")
+    if raw_cpc[0][0][0][0] == "":
+        print("it is ''")
+    if np.isnan(raw_cpc[0][0][0][0]):
+        print("np is nan")
 
 
 def construct_data(window = 6):
