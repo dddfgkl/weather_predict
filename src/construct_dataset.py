@@ -20,8 +20,11 @@ def fill_cpc_data():
     print(raw_cpc[0][0])
     if raw_cpc[0][0][0][0] == 'nan':
         print("it is nan")
-    else:
-        print("it is not nan")
+    if raw_cpc[0][0][0][0] == None:
+        print("it is None")
+    if raw_cpc[0][0][0][0] == False:
+        print("it is false")
+
 
 def construct_data(window = 6):
     # read origin data file
