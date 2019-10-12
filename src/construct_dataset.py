@@ -9,6 +9,14 @@ def read_h5(file_path, key):
     f = h5py.File(file_path, 'r')
     return f[key][:]
 
+def fill_cpc_data():
+    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+    raw_cpc = read_h5(raw_cpc_file_path, "cpc")
+    raw_data = read_h5(raw_data_file_path, "bin_label")
+    print("cpc data shape, ", raw_cpc.shape)
+    print("bin data label shape, ", raw_data.shape)
+
 def construct_data(window = 6):
     # read origin data file
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
@@ -20,21 +28,22 @@ def construct_data(window = 6):
     print(raw_cpc[0][0][:][:])
     print("bin data label shape, ", raw_data.shape)
     print(raw_data[:][:][0][0])
-    if True:
-        return
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
-    raw_cpc = raw_cpc.transpose()
-    raw_data = raw_data.transpose()
-
+    raw_cpc = raw_cpc.transpose(3,2,1,0)
+    # raw_data = raw_data.transpose()
+    print(raw_cpc.shape)
+    print(raw_data.shape)
+    if True:
+        return
     # state the path to store data
-    h5train = h5py.File(r'./train_daqisuo.h5', 'w')
-    h5val = h5py.File(r'./valid_daqisuo.h5', 'w')
+    h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo.h5', 'w')
+    h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo.h5', 'w')
     # h5test = h5py.File(r'./test_daqisuo.h5', 'w')
 
     totol_label_nums = 32 * (180 - window + 1)
-    train_sample_nums = 0
-    val_sample_nums = 0
+    train_sample_nums = 28 * (180 - window + 1)
+    val_sample_nums = 4 * (180 - window + 1)
     # test_sample_nums = 0
 
 
@@ -56,7 +65,7 @@ def construct_data(window = 6):
     train_cn = 0
     val_cn = 0
     test_cn = 0
-    if window % 2 == 0:
+    if window % 2 != 0:
         window = window // 2
         for y in range(32):
             for d in range(window,180-window):
@@ -105,5 +114,6 @@ def construct_data(window = 6):
     # h5test.close()
 
 if __name__ == '__main__':
-    construct_data()
+    # construct_data()
+    fill_cpc_data()
 
