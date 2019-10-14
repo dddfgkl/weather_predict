@@ -66,7 +66,7 @@ def sec_to_hms(seconds):
 
 #headers = ['TPM25', 'SO2', 'NO2', 'CO', 'O3','ASO4', 'ANO3', 'ANH4', 'BC', 'OC','PPMF','PPMC','SOA','TPM10','O3_8H','U','V','T','P','HGT','RAIN','PBL','RH','VISIB','AOD','EXT']
 headers=["pm25", "pm10", "so2", "no2", "co", "psfc", "u", "v", "temp", "rh"]
-batch_size = 1
+batch_size = 16
 
 #readFile = h5py.File('./pre_data/2018010116.h5','r')
 #dataset = readFile['2018010116'][:] #shape is (169,269,239,26)
@@ -88,8 +88,8 @@ val_path = "/home/datanfs/anhui/PM25Pred/valid_daqisuo.h5"
 test_path = "./test_daqisuo.h5"
 
 print("##### start load dataset #####")
-h5train = H5Dataset(train_path)
-h5val = H5Dataset(val_path)
+h5train = H5Dataset(train_path_macong)
+h5val = H5Dataset(val_path_macong)
 # h5test = H5Dataset(test_path)
 
 loader_train = DataLoader(h5train, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
@@ -98,12 +98,12 @@ loader_valid = DataLoader(h5val, batch_size=batch_size,shuffle=True,num_workers=
 print("##### load dataset over #####")
 
 
-height = 339
-width = 432
+#height = 339
+#width = 432
 
-# height = 87 #269
-# width = 54 #239
-headers_length = 10
+height = 87 #269
+width = 54 #239
+headers_length = 1
 input_dim = 10 #26
 n_layer = 2
 hidden_size = [64, 128]
@@ -177,7 +177,7 @@ for epoch in range(start_epoch, n_epoch + 1):
     train_loss = train_epoch_loss//len(loader_train)
     end = time.time()
     time_cost = sec_to_hms(int(end-start))
-    print('epoch = {}, training loss = {}, lr = {}, time cost = {}'.format(epoch, train_loss, lr, time_cost))
+    print('epoch = {}, training loss = {}, lr = {}, time cost = {}, length loader_train = {}'.format(epoch, train_loss, lr, time_cost, len(loader_train)))
 
     epoch_h5.append(epoch)
     train_loss_h5.append(train_loss)
