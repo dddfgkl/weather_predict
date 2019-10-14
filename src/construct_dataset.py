@@ -22,6 +22,8 @@ def desc_h5():
         for d in range(6):
             if np.any(np.isnan(train_data[i][d])):
                 print("##### have nan number #####")
+            else:
+                print("##### have not nan #####")
 
     print(train_data.shape)
     print(valid_data.shape)
