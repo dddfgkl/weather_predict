@@ -80,6 +80,9 @@ batch_size = 1
 train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
 val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
+train_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/train_daqisuo.h5"
+val_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/valid_daqisuo.h5"
+
 train_path = "/home/datanfs/anhui/PM25Pred/train_daqisuo.h5"
 val_path = "/home/datanfs/anhui/PM25Pred/valid_daqisuo.h5"
 test_path = "./test_daqisuo.h5"
