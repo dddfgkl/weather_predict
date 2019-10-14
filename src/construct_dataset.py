@@ -164,7 +164,7 @@ def construct_data(window = 6):
     # h5test.close()
 
 if __name__ == '__main__':
-    # construct_data()
-    fill_cpc_data()
+    construct_data()
+    # nfill_cpc_data()
     # desc_h5()
 
