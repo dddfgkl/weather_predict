@@ -66,7 +66,7 @@ def sec_to_hms(seconds):
 
 #headers = ['TPM25', 'SO2', 'NO2', 'CO', 'O3','ASO4', 'ANO3', 'ANH4', 'BC', 'OC','PPMF','PPMC','SOA','TPM10','O3_8H','U','V','T','P','HGT','RAIN','PBL','RH','VISIB','AOD','EXT']
 headers=["pm25", "pm10", "so2", "no2", "co", "psfc", "u", "v", "temp", "rh"]
-batch_size = 32
+batch_size = 2
 
 #readFile = h5py.File('./pre_data/2018010116.h5','r')
 #dataset = readFile['2018010116'][:] #shape is (169,269,239,26)
@@ -80,13 +80,13 @@ batch_size = 32
 train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
 val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
-train_path = "./train_daqisuo.h5"
-val_path = "./valid_daqisuo.h5"
+train_path = "/home/datanfs/anhui/PM25Pred/train_daqisuo.h5"
+val_path = "/home/datanfs/anhui/PM25Pred/valid_daqisuo.h5"
 test_path = "./test_daqisuo.h5"
 
 print("##### start load dataset #####")
-h5train = H5Dataset(train_path_macong)
-h5val = H5Dataset(val_path_macong)
+h5train = H5Dataset(train_path)
+h5val = H5Dataset(val_path)
 # h5test = H5Dataset(test_path)
 
 loader_train = DataLoader(h5train, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
@@ -94,10 +94,14 @@ loader_valid = DataLoader(h5val, batch_size=batch_size,shuffle=True,num_workers=
 # loader_test =  DataLoader(h5test, batch_size=1,shuffle=False,num_workers=16)
 print("##### load dataset over #####")
 
+"""
+height = 339
+width = 432
+"""
 
 height = 87 #269
 width = 54 #239
-headers_length = 1
+headers_length = 10
 input_dim = 10 #26
 n_layer = 2
 hidden_size = [64, 128]
