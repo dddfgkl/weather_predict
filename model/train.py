@@ -79,23 +79,25 @@ batch_size = 2
 #loader_valid = DataLoader(validationset, batch_size=batch_size, shuffle=True, num_workers=16, drop_last=True)
 #loader_test = DataLoader(validationset, batch_size=batch_size, shuffle=True, num_workers=16, drop_last=True)
 
-
+train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
 train_path = "./train_daqisuo.h5"
 val_path = "./valid_daqisuo.h5"
 test_path = "./test_daqisuo.h5"
 
-h5train = H5Dataset(train_path)
-h5val = H5Dataset(val_path)
-h5test = H5Dataset(test_path)
+h5train = H5Dataset(train_path_macong)
+h5val = H5Dataset(val_path_macong)
+# h5test = H5Dataset(test_path)
 
 loader_train = DataLoader(h5train, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
 loader_valid = DataLoader(h5val, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
-loader_test =  DataLoader(h5test, batch_size=1,shuffle=False,num_workers=16)
+# loader_test =  DataLoader(h5test, batch_size=1,shuffle=False,num_workers=16)
 
 
-height = 339 #269
-width = 432 #239
+height = 87 #269
+width = 54 #239
+headers_length = 1
 input_dim = 10 #26
 n_layer = 2
 hidden_size = [64, 128]
@@ -109,7 +111,7 @@ if not os.path.exists(direc):
     os.makedirs(direc)
 
 air = AirConvLSTM(input_size=(height, width),
-                    input_dim=len(headers),
+                    input_dim=headers_length,
                     hidden_dim=hidden_size,
                     kernel_size=(3, 3),
                     num_layers=n_layer,
