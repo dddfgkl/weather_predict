@@ -94,13 +94,12 @@ loader_valid = DataLoader(h5val, batch_size=batch_size,shuffle=True,num_workers=
 # loader_test =  DataLoader(h5test, batch_size=1,shuffle=False,num_workers=16)
 print("##### load dataset over #####")
 
-"""
+
 height = 339
 width = 432
-"""
 
-height = 87 #269
-width = 54 #239
+# height = 87 #269
+# width = 54 #239
 headers_length = 10
 input_dim = 10 #26
 n_layer = 2
