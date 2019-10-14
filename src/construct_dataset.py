@@ -13,11 +13,14 @@ def desc_h5():
     train_path = '/home/datanfs/macong_data/train_daqisuo.h5'
     valid_path = '/home/datanfs/macong_data/valid_daqisuo.h5'
 
+    train_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/train_daqisuo.h5"
+    valid_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/valid_daqisuo.h5"
+
     #train_path = "/home/datanfs/anhui/PM25Pred/train_daqisuo.h5"
     #valid_path = "/home/datanfs/anhui/PM25Pred/valid_daqisuo.h5"
 
-    train_data = read_h5(train_path, 'data')
-    valid_data = read_h5(valid_path, 'data')
+    train_data = read_h5(train_path_52, 'data')
+    valid_data = read_h5(valid_path_52, 'data')
     for i in range(4900):
         for d in range(6):
             if np.any(np.isnan(train_data[i][d])):
