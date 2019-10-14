@@ -110,8 +110,11 @@ direc = './convlstm/model/notebook_daqisuo/'
 if not os.path.exists(direc):
     os.makedirs(direc)
 
-record_path = "./record/train_record.h5"
-file_record = h5py.File(record_path, 'w')
+record_dir = "./record/"
+record_file_name = "train_record.h5"
+if not os.path.exists(record_dir):
+    os.makedirs(record_dir)
+file_record = h5py.File(os.path.join(record_dir, record_file_name), 'w')
 
 air = AirConvLSTM(input_size=(height, width),
                     input_dim=headers_length,
