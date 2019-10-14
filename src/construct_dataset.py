@@ -35,7 +35,7 @@ def fill_cpc_data():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
 
-    filled_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v1.h5"
+    filled_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
 
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
@@ -52,6 +52,7 @@ def fill_cpc_data():
         for d in range(180):
             for lat in range(54):
                 for lon in range(87):
+                    print(raw_data[lon][lat][d][y], type(raw_data[lon][lat][d][y]), raw_cpc[lon][lat][d][y], type(raw_cpc[lon][lat][d][y]))
                     if np.isnan(raw_cpc[lon][lat][d][y]):
                         how_many_nan += 1
                         filled_data[lon][lat][d][y] = raw_data[lon][lat][d][y]
@@ -161,6 +162,6 @@ def construct_data(window = 6):
 
 if __name__ == '__main__':
     # construct_data()
-    # fill_cpc_data()
-    desc_h5()
+    fill_cpc_data()
+    # desc_h5()
 
