@@ -47,13 +47,15 @@ def fill_cpc_data():
     filled_data = np.zeros(raw_cpc.shape)
     print(filled_data.shape)
 
+    nan_other = -9.96921e+36
+
     how_many_nan = 0
     for y in range(32):
         for d in range(180):
             for lat in range(54):
                 for lon in range(87):
                     print(raw_data[lon][lat][d][y], type(raw_data[lon][lat][d][y]), raw_cpc[lon][lat][d][y], type(raw_cpc[lon][lat][d][y]))
-                    if np.isnan(raw_cpc[lon][lat][d][y]) or -9.96921e+36 == raw_cpc[lon][lat][d][y]:
+                    if np.isnan(raw_cpc[lon][lat][d][y]) or nan_other == raw_cpc[lon][lat][d][y]:
                         print("##### raw cpc {} is nan #####".format(raw_cpc[lon][lat][d][y]))
                         how_many_nan += 1
                         filled_data[lon][lat][d][y] = raw_data[lon][lat][d][y]
