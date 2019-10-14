@@ -18,6 +18,12 @@ def desc_h5():
 
     train_data = read_h5(train_path, 'data')
     valid_data = read_h5(valid_path, 'data')
+    for i in range(4900):
+        for d in range(6):
+            for lon in range(66):
+                print(train_data[i][d][lon])
+                if i > 2 :
+                    break
 
     print(train_data.shape)
     print(valid_data.shape)
