@@ -110,6 +110,9 @@ direc = './convlstm/model/notebook_daqisuo/'
 if not os.path.exists(direc):
     os.makedirs(direc)
 
+record_path = "./record/train_record.h5"
+file_record = h5py.File(record_path, 'w')
+
 air = AirConvLSTM(input_size=(height, width),
                     input_dim=headers_length,
                     hidden_dim=hidden_size,
@@ -138,6 +141,13 @@ start = time.time()
 min_loss = np.inf
 start_epoch=1
 resume=False
+
+epoch_h5 = []
+train_loss_h5 = []
+train_lr_h5 = []
+time_cost_h5 = []
+validation_loss_h5 = []
+
 if resume:
     path=r"convlstm/model/notebook/epoch_128.pt"
     checkpoint = torch.load(path)
@@ -159,6 +169,11 @@ for epoch in range(start_epoch, n_epoch + 1):
     end = time.time()
     time_cost = sec_to_hms(int(end-start))
     print('epoch = {}, training loss = {}, lr = {}, time cost = {}'.format(epoch, train_loss, lr, time_cost))
+
+    epoch_h5.append(epoch)
+    train_loss_h5.append(train_loss)
+    train_lr_h5.append(lr)
+    time_cost_h5.append(time_cost)
     
     val_epoch_loss = 0
     with torch.no_grad():
@@ -166,7 +181,8 @@ for epoch in range(start_epoch, n_epoch + 1):
             val_error = valid(sample_batched, air, nn.MSELoss())
             val_epoch_loss += val_error
     val_loss = val_epoch_loss//len(loader_valid)
-    print('validation loss = {}'.format(val_loss))   
+    print('validation loss = {}'.format(val_loss))
+    validation_loss_h5.append(val_loss)
     
     if val_loss < min_loss:
         min_loss = val_loss
@@ -174,4 +190,12 @@ for epoch in range(start_epoch, n_epoch + 1):
         print('saving model to {}'.format(name))
         state = { 'model': air.state_dict(), 'optimizer':optimizer.state_dict(),'epoch': epoch}
         torch.save(state, name)
+
+file_record["epoch_h5"] = epoch_h5
+file_record["train_loss_h5"] = train_loss_h5
+file_record["train_lr_h5"] = train_lr_h5
+file_record["time_cost_h5"] = time_cost_h5
+file_record["validation_loss_h5"] = validation_loss_h5
+file_record.close()
+
 
