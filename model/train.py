@@ -84,6 +84,7 @@ train_path = "./train_daqisuo.h5"
 val_path = "./valid_daqisuo.h5"
 test_path = "./test_daqisuo.h5"
 
+print("##### start load dataset #####")
 h5train = H5Dataset(train_path_macong)
 h5val = H5Dataset(val_path_macong)
 # h5test = H5Dataset(test_path)
@@ -91,6 +92,7 @@ h5val = H5Dataset(val_path_macong)
 loader_train = DataLoader(h5train, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
 loader_valid = DataLoader(h5val, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
 # loader_test =  DataLoader(h5test, batch_size=1,shuffle=False,num_workers=16)
+print("##### load dataset over #####")
 
 
 height = 87 #269
@@ -142,6 +144,7 @@ if resume:
     air.load_state_dict(checkpoint['model'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     start_epoch=checkpoint['epoch']+1
+print("##### start train, epoch is {} #####".format(n_epoch))
 for epoch in range(start_epoch, n_epoch + 1):
     if epoch > weight_decay_epoch:
         scheduler.step()
