@@ -18,8 +18,7 @@ def desc_h5():
 
     train_data = read_h5(train_path, 'data')
     valid_data = read_h5(valid_path, 'data')
-    for i in range(len(valid_path)):
-        print(valid_data[i][0])
+
     print(train_data.shape)
     print(valid_data.shape)
 
