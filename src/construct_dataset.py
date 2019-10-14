@@ -68,7 +68,7 @@ def fill_cpc_data():
 
 def construct_data(window = 6):
     # read origin data file
-    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v1.h5"
+    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
@@ -85,8 +85,8 @@ def construct_data(window = 6):
     print(raw_data.shape)
 
     # state the path to store data
-    h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo.h5', 'w')
-    h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo.h5', 'w')
+    h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo_v2.h5', 'w')
+    h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo_v2.h5', 'w')
     # h5test = h5py.File(r'./test_daqisuo.h5', 'w')
 
     totol_label_nums = 32 * (180 - window + 1)
