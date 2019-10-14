@@ -20,10 +20,8 @@ def desc_h5():
     valid_data = read_h5(valid_path, 'data')
     for i in range(4900):
         for d in range(6):
-            for lon in range(66):
-                print(train_data[i][d][lon])
-                if i > 2 :
-                    break
+            if np.any(np.isnan(train_data[i][d])):
+                print("##### have nan number #####")
 
     print(train_data.shape)
     print(valid_data.shape)
