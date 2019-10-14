@@ -66,7 +66,7 @@ def sec_to_hms(seconds):
 
 #headers = ['TPM25', 'SO2', 'NO2', 'CO', 'O3','ASO4', 'ANO3', 'ANH4', 'BC', 'OC','PPMF','PPMC','SOA','TPM10','O3_8H','U','V','T','P','HGT','RAIN','PBL','RH','VISIB','AOD','EXT']
 headers=["pm25", "pm10", "so2", "no2", "co", "psfc", "u", "v", "temp", "rh"]
-batch_size = 16
+batch_size = 32
 
 #readFile = h5py.File('./pre_data/2018010116.h5','r')
 #dataset = readFile['2018010116'][:] #shape is (169,269,239,26)
