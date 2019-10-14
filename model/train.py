@@ -12,7 +12,6 @@ import torch.optim as optim
 from torch.nn.parameter import Parameter
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader
-import tensorwatch as tw
 import torchvision
 from torchvision import transforms
 from dataset import AirDataset,H5Dataset
