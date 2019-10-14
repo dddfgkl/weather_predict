@@ -22,7 +22,7 @@ from utils import *
 import WarmUpLR
 from model_complexity import compute_model_complexity
 from modelsize_estimate import compute_modelsize
-from gpu_mem_track import  MemTracker
+
 
 torch.manual_seed(2018)
 torch.cuda.manual_seed(2018)
