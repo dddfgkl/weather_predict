@@ -54,9 +54,9 @@ def fill_cpc_data():
         for d in range(180):
             for lat in range(54):
                 for lon in range(87):
-                    print(raw_data[lon][lat][d][y], type(raw_data[lon][lat][d][y]), raw_cpc[lon][lat][d][y], type(raw_cpc[lon][lat][d][y]))
+                    # print(raw_data[lon][lat][d][y], type(raw_data[lon][lat][d][y]), raw_cpc[lon][lat][d][y], type(raw_cpc[lon][lat][d][y]))
                     if np.isnan(raw_cpc[lon][lat][d][y]) or nan_other > raw_cpc[lon][lat][d][y]:
-                        print("##### raw cpc {} is nan #####".format(raw_cpc[lon][lat][d][y]))
+                        # ("##### raw cpc {} is nan #####".format(raw_cpc[lon][lat][d][y]))
                         how_many_nan += 1
                         filled_data[lon][lat][d][y] = raw_data[lon][lat][d][y]
                     else:
