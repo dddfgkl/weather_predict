@@ -59,12 +59,12 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.xlim()
     plt.ylim()
 
-    plt.xlabel("x")
-    plt.ylabel("y")
+    plt.xlabel("x(day)")
+    plt.ylabel("y(mse)")
 
     plt.scatter(x, y)
     plt.plot(x, y)
-    plt.title("title")
+    plt.title("day-mse plot single year")
     plt.show()
 
 def test_mse():
