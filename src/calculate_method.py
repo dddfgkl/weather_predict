@@ -25,10 +25,11 @@ def desc_h5_file():
 def plot_center():
     cpc, bin = desc_h5_file()
     mse = []
-    for y in range(3):
+    for y in range(1):
         for d in range(180):
             mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-    print(mse)
+    x = [i for i in range(180)]
+    plot_graph(x, mse, './')
 
 # self define mse
 def MSE(y_true, y_pred):
