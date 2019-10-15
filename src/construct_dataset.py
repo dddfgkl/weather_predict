@@ -35,7 +35,7 @@ def fill_cpc_data():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
 
-    filled_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v3.h5"
+    filled_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
 
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
