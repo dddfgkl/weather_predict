@@ -52,6 +52,7 @@ def fill_cpc_data():
     count_cpc = 0
     how_many_nan = 0
     for y in range(32):
+        print(f"now is process {y} year")
         for d in range(180):
             for lat in range(54):
                 for lon in range(87):
@@ -63,7 +64,7 @@ def fill_cpc_data():
                     else:
                         filled_data[lon][lat][d][y] = raw_cpc[lon][lat][d][y]
                         count_cpc += 1
-                        print("##### filled with cpc #####")
+                        # print("##### filled with cpc #####")
     print("{} nan number, {} cpc raw number, {} total number".format(how_many_nan, count_cpc, 32*180*54*87))
     filled_store['cpc'] = filled_data
     print("filled data desc, ", filled_data.shape)
