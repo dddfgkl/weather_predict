@@ -51,8 +51,8 @@ def plot_graph(x, y, dir_path, file_name=None):
     if os.path.exists(dir_path) == False:
         os.mkdir(dir_path)
     plt.figure()
-    x = [1,2,3,4,5]
-    y = [2,3,1,5,7]
+    # x = [1,2,3,4,5]
+    # y = [2,3,1,5,7]
 
     # implement your awesome plot
     plt.xlim()
