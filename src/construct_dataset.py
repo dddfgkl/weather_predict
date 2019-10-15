@@ -47,8 +47,9 @@ def fill_cpc_data():
     filled_data = np.zeros(raw_cpc.shape)
     print(filled_data.shape)
 
-    nan_other = 100
+    nan_other = -100
 
+    count_cpc = 0
     how_many_nan = 0
     for y in range(32):
         for d in range(180):
@@ -61,8 +62,9 @@ def fill_cpc_data():
                         filled_data[lon][lat][d][y] = raw_data[lon][lat][d][y]
                     else:
                         filled_data[lon][lat][d][y] = raw_cpc[lon][lat][d][y]
+                        count_cpc += 1
                         print("##### filled with cpc #####")
-    print("{} nan number, {} total number".format(how_many_nan, 32*180*54*87))
+    print("{} nan number, {} cpc raw number, {} total number".format(how_many_nan, count_cpc, 32*180*54*87))
     filled_store['cpc'] = filled_data
     print("filled data desc, ", filled_data.shape)
     print("fill data complected")
