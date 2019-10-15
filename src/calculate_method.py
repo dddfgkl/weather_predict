@@ -20,7 +20,14 @@ def desc_h5_file():
     raw_data = raw_data.transpose(3, 2, 0, 1)
     print(raw_cpc.shape)
     print(raw_data.shape)
+    return raw_cpc, raw_data
 
+def plot_center():
+    cpc, bin = desc_h5_file()
+    mse = []
+    for y in range(32):
+        mse.append(sklearn_MSE(cpc[y], bin[y]))
+    print(mse)
 
 # self define mse
 def MSE(y_true, y_pred):
@@ -72,4 +79,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_graph('./')
-    unit_test()
+    # unit_test()
+    plot_center()
