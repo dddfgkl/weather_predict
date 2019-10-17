@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 from construct_dataset import read_h5
+from read_nc import desc_single_ncFile
 
 def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
@@ -21,6 +22,18 @@ def desc_h5_file():
     print(raw_cpc.shape)
     print(raw_data.shape)
     return raw_cpc, raw_data
+
+def plot_origin_data_test():
+    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+
+    cpc_data = desc_single_ncFile(cpc_1981_path, 'tmax')
+    raw_data = read_h5(raw_data_file_path, "bin_label")
+    print(cpc_data.shapr)
+    print(raw_data.shape)
+
+    print("plot test over")
+
 
 def plot_center():
     x = [i for i in range(180)]
@@ -78,7 +91,8 @@ def test_mse():
 
 def unit_test():
     # test_mse()
-    desc_h5_file()
+    # desc_h5_file()
+    plot_origin_data_test()
 
 if __name__ == '__main__':
     # plot_graph('./')
