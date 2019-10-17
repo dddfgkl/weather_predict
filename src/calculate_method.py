@@ -96,5 +96,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_graph('./')
-    # unit_test()
-    plot_center()
+    unit_test()
+    # plot_center()
