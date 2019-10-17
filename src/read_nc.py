@@ -152,6 +152,7 @@ def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
     # desc_single_h5_file(store_file_path3)
     all_data = desc_all_ncFile(fixed_cpc_nc_dir_path)
+    print("data shape", all_data.shape)
     # store_data_2_h5(trim_cpc_nc_dir_path, all_data)
     print("unit test over!")
 
