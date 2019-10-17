@@ -52,7 +52,7 @@ def plot_origin_data_test():
 
 
 def plot_center():
-    x = [i for i in range(32)]
+    x = [i for i in range(1981,1981+33)]
     cpc, bin = desc_h5_file()
     year_mse = []
     # mse = []
@@ -92,12 +92,12 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.xlim()
     plt.ylim()
 
-    plt.xlabel("x(day)")
+    plt.xlabel("x(year)")
     plt.ylabel("y(mse)")
 
     plt.scatter(x, y)
     plt.plot(x, y)
-    plt.title("day-mse plot single year")
+    plt.title("year-mse plot single year")
     plt.show()
 
 def test_mse():
