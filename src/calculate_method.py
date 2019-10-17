@@ -32,8 +32,13 @@ def plot_origin_data_test():
     print(cpc_data.shape)
     print(raw_data.shape)
 
-    raw_data = raw_data.transpose(3,2,1,0)[0]
+    raw_data = raw_data.transpose(3,2,0,1)[0]
 
+    for d in range(180):
+        for lat in range(54):
+            for lon in range(87):
+                if cpc_data[d][lat][lon] < -100 or np.isnan(cpc_data[d][lat][lon]):
+                    cpc_data[d][lat][lon] = raw_data[d][lat][lon]
     mse = []
     x = [i for i in range(180)]
     for d in range(180):
