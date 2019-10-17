@@ -52,14 +52,18 @@ def plot_origin_data_test():
 
 
 def plot_center():
-    x = [i for i in range(180)]
+    x = [i for i in range(32)]
     cpc, bin = desc_h5_file()
+    year_mse = []
     mse = []
     for y in range(32):
+        mse = []
         for d in range(180):
             mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-        plot_graph(x, mse, './')
-        mse = []
+        year_mse.append(sklearn_MSE(mse))
+
+    plot_graph(x, year_mse, './')
+    # mse = []
 
 # self define mse
 def MSE(y_true, y_pred):
@@ -112,5 +116,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_graph('./')
-    unit_test()
-    # plot_center()
+    # unit_test()
+    plot_center()
