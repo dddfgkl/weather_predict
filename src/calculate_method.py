@@ -29,7 +29,7 @@ def plot_origin_data_test():
 
     cpc_data = desc_single_ncFile(cpc_1981_path, 'tmax')
     raw_data = read_h5(raw_data_file_path, "bin_label")
-    print(cpc_data.shapr)
+    print(cpc_data.shape)
     print(raw_data.shape)
 
     print("plot test over")
