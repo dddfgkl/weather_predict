@@ -52,7 +52,7 @@ def plot_origin_data_test():
 
 
 def plot_center():
-    x = [i for i in range(1981,1981+33)]
+    x = [i for i in range(1981,1981+32)]
     cpc, bin = desc_h5_file()
     year_mse = []
     # mse = []
