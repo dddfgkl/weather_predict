@@ -55,12 +55,12 @@ def plot_center():
     x = [i for i in range(32)]
     cpc, bin = desc_h5_file()
     year_mse = []
-    mse = []
+    # mse = []
     for y in range(32):
         mse = []
         for d in range(180):
             mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-        year_mse.append(sklearn_MSE(mse))
+        year_mse.append(sum(mse)/len(mse))
 
     plot_graph(x, year_mse, './')
     # mse = []
