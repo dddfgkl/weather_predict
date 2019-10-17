@@ -29,10 +29,7 @@ def plot_center():
     for y in range(32):
         for d in range(180):
             mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-            if mse[-1] == 0:
-                print(y, d)
-                break
-        # plot_graph(x, mse, './')
+        plot_graph(x, mse, './')
         mse = []
 
 # self define mse
