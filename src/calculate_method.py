@@ -32,6 +32,17 @@ def plot_origin_data_test():
     print(cpc_data.shape)
     print(raw_data.shape)
 
+    raw_data = raw_data.transpose(3,2,1,0)[0]
+
+    mse = []
+    x = [for x in range(180)]
+    for d in range(180):
+        mse.append(sklearn_MSE(cpc_data[d], raw_data[d]))
+    print(mse)
+    print(x)
+
+    plot_graph(x, mse, './')
+
     print("plot test over")
 
 
