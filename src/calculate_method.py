@@ -72,6 +72,37 @@ def plot_center():
         break
     # mse = []
 
+def plot_image_test():
+    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+
+    cpc_data = desc_single_ncFile(cpc_1981_path, 'tmax')
+    raw_data = read_h5(raw_data_file_path, "bin_label")
+    print(cpc_data.shape)
+    print(raw_data.shape)
+
+    raw_data = raw_data.transpose(3, 2, 1, 0)[0]
+
+    for d in range(180):
+        for lat in range(54):
+            for lon in range(87):
+                if cpc_data[d][lat][lon] < -100 or np.isnan(cpc_data[d][lat][lon]):
+                    cpc_data[d][lat][lon] = raw_data[d][lat][lon]
+    mse = []
+    x = [i for i in range(180)]
+    for d in range(180):
+        mse.append(sklearn_MSE(cpc_data[d], raw_data[d]))
+        plot_image(cpc_data[d], f"day{d}_cpc_image.jpg")
+        plot_graph(raw_data[d], f"day{d}_bin_image.jpg")
+
+        break
+    print(mse)
+    print(x)
+
+    # plot_graph(x, mse, './')
+
+    print("plot test over")
+
 # self define mse
 def MSE(y_true, y_pred):
     y_true = np.array(y_true)
@@ -107,11 +138,18 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.title("year-mse plot single year")
     plt.show()
 
-    plt.savefig('./test1.jpg')
+    if file_name != None:
+        plt.savefig(file_name)
+    else:
+        plt.savefig('./test1.jpg')
 
-def plot_image(image, fileName=None):
-    plt.matshow(image)
-    plt.close()
+def plot_image(matrix, file_name=None):
+    plt.matshow(matrix)
+    if file_name == None:
+        plt.savefig('test.jpg')
+    else:
+        plt.savefig(file_name)
+
 
 # 以图像方式画图,测试在发开机上不能正常显示
 def plot_image_one(image, fileName=None):
@@ -137,4 +175,5 @@ def unit_test():
 if __name__ == '__main__':
     # plot_graph('./')
     # unit_test()
-    plot_center()
+    # plot_center()
+    plot_image_test()
