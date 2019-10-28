@@ -4,6 +4,7 @@ from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
+from matplotlib.backends.backend_pdf import PdfPages
 
 def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
@@ -60,8 +61,9 @@ def plot_center():
         mse = []
         for d in range(180):
             # mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-            plot_image(cpc[y][d])
-            plot_image(bin[y][d])
+            print(f"year {y} , day {d}")
+            plot_image(cpc[y][d], f"year{y}_day{d}_cpc.pdf")
+            plot_image(bin[y][d], f"year{y}_day{d}_bin.pdf")
         # year_mse.append(sum(mse)/len(mse))
 
     # plot_graph(x, year_mse, './')
@@ -103,11 +105,13 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.show()
 
 # 以图像方式画图
-def plot_image(image):
-    plt.switch_backend('agg')
+def plot_image(image, fileName):
+    plt.switch_backend('Agg')
+    pdf = PdfPages(fileName)
     plt.imshow(image)
     plt.show()
-
+    plt.close()
+    pdf.close()
 
 def test_mse():
     y_true = [3, -0.5, 2, 7]
