@@ -110,7 +110,7 @@ def plot_graph(x, y, dir_path, file_name=None):
 def plot_image(image, fileName=None):
     plt.imshow(image)
     plt.show()
-    plt.close()
+    # plt.close()
 
 def test_mse():
     y_true = [3, -0.5, 2, 7]
