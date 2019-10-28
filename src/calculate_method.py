@@ -104,6 +104,7 @@ def plot_graph(x, y, dir_path, file_name=None):
 
 # 以图像方式画图
 def plot_image(image):
+    plt.switch_backend('agg')
     plt.imshow(image)
     plt.show()
 
