@@ -90,12 +90,14 @@ def plot_image_test():
                     cpc_data[d][lat][lon] = raw_data[d][lat][lon]
     mse = []
     x = [i for i in range(180)]
+    select_day = [0,1,2,3,4,5,6,7,8,9,10,175,176,177,178,179]
     for d in range(180):
+        if d not in select_day:
+            continue
         mse.append(sklearn_MSE(cpc_data[d], raw_data[d]))
         plot_image(cpc_data[d], f"day{d}_cpc_image.jpg")
         plot_image(raw_data[d], f"day{d}_bin_image.jpg")
 
-        break
     print(mse)
     print(x)
 
