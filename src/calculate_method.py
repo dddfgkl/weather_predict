@@ -1,5 +1,6 @@
 import os
 import numpy as np
+from PIL import Image
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 from construct_dataset import read_h5
@@ -108,8 +109,9 @@ def plot_graph(x, y, dir_path, file_name=None):
 
 # 以图像方式画图
 def plot_image(image, fileName=None):
-    plt.imshow(image)
-    plt.show()
+    im = Image.fromarray(image)
+    im.show()
+    # plt.show()
     # plt.close()
 
 def test_mse():
