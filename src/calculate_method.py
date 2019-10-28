@@ -69,6 +69,7 @@ def plot_center():
             # plot_image(bin[y][d])
         # year_mse.append(sum(mse)/len(mse)
         plot_graph(x, mse, './')
+        break
     # mse = []
 
 # self define mse
@@ -105,6 +106,8 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.plot(x, y)
     plt.title("year-mse plot single year")
     plt.show()
+
+    plt.savefig('./test1/jpg')
 
 def plot_image(image, fileName=None):
     plt.matshow(image)
