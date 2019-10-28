@@ -107,8 +107,12 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.title("year-mse plot single year")
     plt.show()
 
-# 以图像方式画图
 def plot_image(image, fileName=None):
+    plt.matshow(image)
+    plt.close()
+
+# 以图像方式画图,测试在发开机上不能正常显示
+def plot_image_one(image, fileName=None):
     im = Image.fromarray(image)
     im.show()
     # plt.show()
