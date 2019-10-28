@@ -7,7 +7,7 @@ from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
 from matplotlib.backends.backend_pdf import PdfPages
 
-# plt.switch_backend('Agg')
+plt.switch_backend('Agg')
 
 def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
