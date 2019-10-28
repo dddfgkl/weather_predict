@@ -144,6 +144,11 @@ def plot_graph(x, y, dir_path, file_name=None):
         plt.savefig('./test1.jpg')
 
 def plot_image(matrix, file_name=None):
+    # plt.xlim()
+    plt.xlabel("lon")
+    plt.ylabel("lat")
+    plt.title("day matrix")
+
     plt.matshow(matrix)
     if file_name == None:
         plt.savefig('test.jpg')
