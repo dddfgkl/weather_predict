@@ -1,6 +1,8 @@
 import os
 import numpy as np
 from sklearn.metrics import mean_squared_error
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
@@ -62,8 +64,8 @@ def plot_center():
         for d in range(180):
             # mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
             print(f"year {y} , day {d}")
-            plot_image(cpc[y][d], f"year{y}_day{d}_cpc.pdf")
-            plot_image(bin[y][d], f"year{y}_day{d}_bin.pdf")
+            plot_image(cpc[y][d])
+            plot_image(bin[y][d])
         # year_mse.append(sum(mse)/len(mse))
 
     # plot_graph(x, year_mse, './')
@@ -105,13 +107,10 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.show()
 
 # 以图像方式画图
-def plot_image(image, fileName):
-    plt.switch_backend('Agg')
-    pdf = PdfPages(fileName)
+def plot_image(image, fileName=None):
     plt.imshow(image)
     plt.show()
     plt.close()
-    pdf.close()
 
 def test_mse():
     y_true = [3, -0.5, 2, 7]
