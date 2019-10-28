@@ -63,13 +63,12 @@ def plot_center():
     for y in range(32):
         mse = []
         for d in range(180):
-            # mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-            print(f"year {y} , day {d}, shape {cpc[y][d].shape}")
-            plot_image(cpc[y][d])
-            plot_image(bin[y][d])
-        # year_mse.append(sum(mse)/len(mse))
-
-    # plot_graph(x, year_mse, './')
+            mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
+            # print(f"year {y} , day {d}, shape {cpc[y][d].shape}")
+            # plot_image(cpc[y][d])
+            # plot_image(bin[y][d])
+        # year_mse.append(sum(mse)/len(mse)
+        plot_graph(x, year_mse, './')
     # mse = []
 
 # self define mse
