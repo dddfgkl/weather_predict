@@ -59,10 +59,12 @@ def plot_center():
     for y in range(32):
         mse = []
         for d in range(180):
-            mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-        year_mse.append(sum(mse)/len(mse))
+            # mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
+            plot_image(cpc[y][d])
+            plot_image(bin[y][d])
+        # year_mse.append(sum(mse)/len(mse))
 
-    plot_graph(x, year_mse, './')
+    # plot_graph(x, year_mse, './')
     # mse = []
 
 # self define mse
@@ -99,6 +101,11 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.plot(x, y)
     plt.title("year-mse plot single year")
     plt.show()
+
+# 以图像方式画图
+def plot_image(image):
+    plt.imshow(image)
+
 
 def test_mse():
     y_true = [3, -0.5, 2, 7]
