@@ -1,8 +1,6 @@
 import os
 import numpy as np
 from sklearn.metrics import mean_squared_error
-import matplotlib
-matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
