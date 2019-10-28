@@ -51,7 +51,7 @@ def plot_origin_data_test():
     print("plot test over")
 
 
-def plot_center():
+def cplot_center():
     x = [i for i in range(1981,1981+32)]
     cpc, bin = desc_h5_file()
     year_mse = []
@@ -105,6 +105,7 @@ def plot_graph(x, y, dir_path, file_name=None):
 # 以图像方式画图
 def plot_image(image):
     plt.imshow(image)
+    plt.show()
 
 
 def test_mse():
