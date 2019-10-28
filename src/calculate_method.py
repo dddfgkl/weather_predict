@@ -107,7 +107,7 @@ def plot_graph(x, y, dir_path, file_name=None):
     plt.title("year-mse plot single year")
     plt.show()
 
-    plt.savefig('./test1/jpg')
+    plt.savefig('./test1.jpg')
 
 def plot_image(image, fileName=None):
     plt.matshow(image)
