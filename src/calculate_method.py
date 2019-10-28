@@ -68,7 +68,7 @@ def plot_center():
             # plot_image(cpc[y][d])
             # plot_image(bin[y][d])
         # year_mse.append(sum(mse)/len(mse)
-        plot_graph(x, year_mse, './')
+        plot_graph(x, mse, './')
     # mse = []
 
 # self define mse
