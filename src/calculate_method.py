@@ -44,13 +44,13 @@ def plot_origin_data_test():
                 if cpc_data[d][lat][lon] < -100 or np.isnan(cpc_data[d][lat][lon]):
                     cpc_data[d][lat][lon] = raw_data[d][lat][lon]
     mse = []
-    x = [i for i in range(180)]
-    for d in range(180):
-        mse.append(sklearn_MSE(cpc_data[d], raw_data[d]))
+    x = [i for i in range(179)]
+    for d in range(179):
+        mse.append(sklearn_MSE(cpc_data[d], cpc_data[d+1]))
     print(mse)
     print(x)
 
-    plot_graph(x, mse, './')
+    plot_graph(x, mse, 'cpc_inter_day.jpg')
 
     print("plot test over")
 
@@ -121,9 +121,7 @@ def sklearn_MSE(y_true, y_pred):
     return mean_squared_error(y_true, y_pred)
 
 # self define your plot data
-def plot_graph(x, y, dir_path, file_name=None):
-    if os.path.exists(dir_path) == False:
-        os.mkdir(dir_path)
+def plot_graph(x, y, file_name=None):
     plt.figure()
     # x = [1,2,3,4,5]
     # y = [2,3,1,5,7]
@@ -181,6 +179,6 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_graph('./')
-    # unit_test()
+    unit_test()
     # plot_center()
-    plot_image_test()
+    # plot_image_test()
