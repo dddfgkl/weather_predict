@@ -46,11 +46,11 @@ def plot_origin_data_test():
     mse = []
     x = [i for i in range(179)]
     for d in range(179):
-        mse.append(sklearn_MSE(cpc_data[d], cpc_data[d+1]))
+        mse.append(sklearn_MSE(raw_data[d], raw_data[d+1]))
     print(mse)
     print(x)
 
-    plot_graph(x, mse, 'cpc_inter_day.jpg')
+    plot_graph(x, mse, 'bin_inter_day.jpg')
 
     print("plot test over")
 
