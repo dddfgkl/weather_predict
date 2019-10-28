@@ -7,7 +7,7 @@ from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
 from matplotlib.backends.backend_pdf import PdfPages
 
-# plt.switch_backend('agg')
+plt.switch_backend('Agg')
 
 def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
@@ -64,7 +64,7 @@ def plot_center():
         mse = []
         for d in range(180):
             # mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
-            print(f"year {y} , day {d}")
+            print(f"year {y} , day {d}, shape {cpc[y][d].shape}")
             plot_image(cpc[y][d])
             plot_image(bin[y][d])
         # year_mse.append(sum(mse)/len(mse))
