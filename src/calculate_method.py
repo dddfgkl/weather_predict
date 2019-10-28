@@ -93,7 +93,7 @@ def plot_image_test():
     for d in range(180):
         mse.append(sklearn_MSE(cpc_data[d], raw_data[d]))
         plot_image(cpc_data[d], f"day{d}_cpc_image.jpg")
-        plot_graph(raw_data[d], f"day{d}_bin_image.jpg")
+        plot_image(raw_data[d], f"day{d}_bin_image.jpg")
 
         break
     print(mse)
