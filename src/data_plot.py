@@ -49,6 +49,7 @@ def plot_single_image(matrix, file_name=None):
     plt.title("day matrix")
 
     plt.matshow(matrix)
+    plt.show()
     if file_name == None:
         # plt.savefig('test.jpg')
         pass
