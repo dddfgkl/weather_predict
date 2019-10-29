@@ -26,6 +26,7 @@ def plot_image_from_raw_data():
                     cpc_data[d][lat][lon] = raw_data[d][lat][lon]
     mse = []
     x = [i for i in range(180)]
+
     # 选择部分天数进行画图
     select_day = [0,1,2,3,4,5,6,7,8,9,10,175,176,177,178,179]
     for d in range(180):
@@ -50,6 +51,8 @@ def plot_single_image(matrix, file_name=None):
 
     plt.matshow(matrix)
     # plt.show()
+
+    # ssh链接开发机的时候不能显示，所以需要存储一下，
     if file_name == None:
         # plt.savefig('test.jpg')
         pass
