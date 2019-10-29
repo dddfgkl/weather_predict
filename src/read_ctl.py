@@ -138,7 +138,7 @@ def read_bin_to_numpy():
     return data
 
 def main():
-    read_from_ctl(fileName)
+    # read_from_ctl(fileName)
     a = Grds(ens_mean_file, fileName)
     a_out = a.read("tmax")
     print(a_out.shape, type(a_out))
