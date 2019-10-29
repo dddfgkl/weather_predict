@@ -32,7 +32,7 @@ def plot_image_from_raw_data():
         if d not in select_day:
             continue
         mse.append(mean_squared_error(cpc_data[d], raw_data[d]))
-        plot_single_image(cpc_data[d])
+        # plot_single_image(cpc_data[d])
         plot_single_image(raw_data[d])
 
     print(mse)
