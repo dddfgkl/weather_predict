@@ -137,7 +137,7 @@ def read_bin_to_numpy():
     data = f.read("tmax")
     return data
 
-def main():
+def unit_test():
     # read_from_ctl(fileName)
     a = Grds(ens_mean_file, fileName)
     a_out = a.read("tmax")
@@ -150,6 +150,15 @@ def main():
     f_store = h5py.File(store_file_path, 'w')
     f_store["bin_label"] = a_out
     f_store.close()
+
+def main():
+    a = Grds(ens_mean_file, fileName)
+    a_out = a.read("tmax")
+    print(a_out.shape, type(a_out))
+    single_fram = a_out[:, :, 0, 0]
+    print(single_fram.shape)
+    # a.plot_single_frame(single_fram, "single frame show")
+    print(single_fram.shape)
 
 if __name__ == '__main__':
     main()
