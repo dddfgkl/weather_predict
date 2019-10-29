@@ -59,7 +59,7 @@ def plot_origin_data():
     pass
 
 def unit_test():
-    pass
+    plot_image_from_raw_data()
 
 if __name__ == '__main__':
     unit_test()
