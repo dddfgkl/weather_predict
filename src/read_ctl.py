@@ -1,5 +1,6 @@
 import numpy as np
 import h5py
+import csv
 from collections import namedtuple
 
 fileName = "/home/machong/PM25-work/Hind3_daily/predict_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
@@ -157,6 +158,7 @@ def main():
     print(a_out.shape, type(a_out))
     single_fram = a_out[:, :, 0, 0]
     print(single_fram.shape)
+    np.savetxt('single_frame.csv', single_fram)
     # a.plot_single_frame(single_fram, "single frame show")
     print(single_fram.shape)
 
