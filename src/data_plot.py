@@ -44,12 +44,12 @@ def plot_image_from_raw_data():
 
 def plot_single_image(matrix, file_name=None):
     # plt.xlim()
-    plt.xlabel("lon")
-    plt.ylabel("lat")
-    plt.title("day matrix")
+    # plt.xlabel("lon")
+    # plt.ylabel("lat")
+    # plt.title("day matrix")
 
     plt.matshow(matrix)
-    plt.show()
+    # plt.show()
     if file_name == None:
         # plt.savefig('test.jpg')
         pass
