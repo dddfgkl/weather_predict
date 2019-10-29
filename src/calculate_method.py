@@ -139,7 +139,8 @@ def plot_graph(x, y, file_name=None):
     plt.show()
 
     if file_name != None:
-        plt.savefig(file_name)
+        # plt.savefig(file_name)
+        pass
     else:
         plt.savefig('./test1.jpg')
 
@@ -151,7 +152,8 @@ def plot_image(matrix, file_name=None):
 
     plt.matshow(matrix)
     if file_name == None:
-        plt.savefig('test.jpg')
+        # plt.savefig('test.jpg')
+        pass
     else:
         plt.savefig(file_name)
 
