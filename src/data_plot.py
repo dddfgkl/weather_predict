@@ -62,7 +62,7 @@ def plot_single_image(matrix, file_name=None):
 def read_origin_single_frame():
     import read_ctl
     a = read_ctl.Grds(read_ctl.ens_mean_file, read_ctl.fileName)
-    a_out = a.read("tmax")
+    a_out = a.read_origin("tmax")
     print(a_out.shape)
 
 def plot_origin_data():
