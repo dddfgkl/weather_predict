@@ -92,7 +92,7 @@ class Grds:
         data = np.memmap(self.fileName, dtype="<f", mode="r", offset=beg*4, shape=end-beg)
         # ">f" : > 大小端问题; fortran direct and unformated 输出与C输出一样；
         print("data shape:", data.shape, type(data))
-        return np.array(data).reshape(self.nx, self.ny, self.nz,self.nt), np.append(data)
+        return np.array(data).reshape(self.nx, self.ny, self.nz,self.nt)
 
     # def plot(self, name: str, levle: int =0):
     def plot(self, name, level=0, lat=None, lon=None, values=None):
@@ -141,7 +141,7 @@ def read_bin_to_numpy():
 def unit_test():
     # read_from_ctl(fileName)
     a = Grds(ens_mean_file, fileName)
-    a_out, _ = a.read("tmax")
+    a_out = a.read("tmax")
     print(a_out.shape, type(a_out))
     single_fram = a_out[:,:,0,0]
     print(single_fram.shape)
