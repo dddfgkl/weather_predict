@@ -44,6 +44,7 @@ def plot_image_from_raw_data():
     print("plot test over")
 
 def plot_single_image(matrix, file_name=None):
+    plt.switch_backend('agg')
     # plt.xlim()
     # plt.xlabel("lon")
     # plt.ylabel("lat")
