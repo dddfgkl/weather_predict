@@ -64,6 +64,9 @@ def read_origin_single_frame():
     a = read_ctl.Grds(read_ctl.ens_mean_file, read_ctl.fileName)
     a_out = a.read_origin("tmax")
     print(a_out.shape)
+    first_frame = a_out[:87*54]
+    first_frame = first_frame.reshape(87, 54)
+    plot_single_image(first_frame, 'first_frame.jpg')
 
 def plot_origin_data():
     pass
