@@ -94,6 +94,23 @@ class Grds:
         print("data shape:", data.shape, type(data))
         return np.array(data).reshape(self.nx, self.ny, self.nz,self.nt)
 
+    def read_origin(self, name):
+        ''' 读取变量，包含所有维度 '''
+        name = name.upper()
+        if not name in self.vars:
+            if name == "XLONG":
+                name = [i for i in self.vars if "LON" in i][0]
+            elif name == "XLAT":
+                name = [i for i in self.vars if "LAT" in i][0]
+            else:
+                print(name, "is a wrong name")
+                exit()
+        beg, end = self.vars[name].rec
+        data = np.memmap(self.fileName, dtype="<f", mode="r", offset=beg*4, shape=end-beg)
+        # ">f" : > 大小端问题; fortran direct and unformated 输出与C输出一样；
+        print("data shape:", data.shape, type(data))
+        return np.array(data)
+
     # def plot(self, name: str, levle: int =0):
     def plot(self, name, level=0, lat=None, lon=None, values=None):
         ''' 快速查看某些变量 '''

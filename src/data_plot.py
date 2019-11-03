@@ -59,11 +59,18 @@ def plot_single_image(matrix, file_name=None):
     else:
         plt.savefig(file_name)
 
+def read_origin_single_frame():
+    import read_ctl
+    a = read_ctl.Grds(read_ctl.ens_mean_file, read_ctl.fileName)
+    a_out = a.read("tmax")
+    print(a_out.shape)
+
 def plot_origin_data():
     pass
 
 def unit_test():
-    plot_image_from_raw_data()
+    # plot_image_from_raw_data()
+    read_origin_single_frame()
 
 if __name__ == '__main__':
     unit_test()
