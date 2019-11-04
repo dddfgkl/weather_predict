@@ -50,7 +50,7 @@ def plot_single_image(matrix, file_name=None):
     # plt.ylabel("lat")
     # plt.title("day matrix")
 
-    plt.matshow(matrix)
+    plt.imshow(matrix)
     # plt.show()
 
     # ssh链接开发机的时候不能显示，所以需要存储一下，
