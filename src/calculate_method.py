@@ -29,14 +29,14 @@ def desc_h5_file():
 
 def plot_origin_data_test():
     cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
-    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
 
     cpc_data = desc_single_ncFile(cpc_1981_path, 'tmax')
     raw_data = read_h5(raw_data_file_path, "bin_label")
     print(cpc_data.shape)
     print(raw_data.shape)
 
-    raw_data = raw_data.transpose(3,2,1,0)[0]
+    raw_data = raw_data[0]
 
     for d in range(180):
         for lat in range(54):
@@ -46,7 +46,7 @@ def plot_origin_data_test():
     mse = []
     x = [i for i in range(179)]
     for d in range(179):
-        mse.append(sklearn_MSE(raw_data[d], raw_data[d+1]))
+        mse.append(sklearn_MSE(raw_data[d], cpc_data[d]))
     print(mse)
     print(x)
 
@@ -139,8 +139,7 @@ def plot_graph(x, y, file_name=None):
     plt.show()
 
     if file_name != None:
-        # plt.savefig(file_name)
-        pass
+        plt.savefig(file_name)
     else:
         plt.savefig('./test1.jpg')
 
