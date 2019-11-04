@@ -44,7 +44,7 @@ def plot_origin_data_test():
                 if cpc_data[d][lat][lon] < -100 or np.isnan(cpc_data[d][lat][lon]):
                     cpc_data[d][lat][lon] = raw_data[d][lat][lon]
     mse = []
-    x = [i for i in range(179)]
+    x = [i for i in range(180)]
     for d in range(179):
         mse.append(sklearn_MSE(raw_data[d], cpc_data[d]))
     print(mse)

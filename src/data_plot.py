@@ -31,17 +31,18 @@ def plot_image_from_raw_data():
 
     # 选择部分天数进行画图
     select_day = [0,1,2,3,4,5,6,7,8,9,10,175,176,177,178,179]
+    select_day = []
     for d in range(180):
         if d not in select_day:
             continue
         mse.append(mean_squared_error(cpc_data[d], raw_data[d]))
-        plot_single_image(cpc_data[d], "1981_cpc_{}_day.jpg".format(d))
-        plot_single_image(raw_data[d], "1981_predict_{}_day.jpg".format(d))
+        # plot_single_image(cpc_data[d], "1981_cpc_{}_day.jpg".format(d))
+        # plot_single_image(raw_data[d], "1981_predict_{}_day.jpg".format(d))
 
     print(mse)
     print(x)
 
-    # plot_graph(x, mse, './')
+    plot_graph(x, mse, './')
 
     print("plot test over")
 
