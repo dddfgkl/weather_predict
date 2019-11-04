@@ -76,8 +76,8 @@ def plot_origin_data():
     pass
 
 def unit_test():
-    # plot_image_from_raw_data()
-    read_origin_single_frame()
+    plot_image_from_raw_data()
+    # read_origin_single_frame()
 
 if __name__ == '__main__':
     unit_test()
