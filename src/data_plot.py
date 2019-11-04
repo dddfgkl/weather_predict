@@ -18,7 +18,7 @@ def plot_image_from_raw_data():
     print(cpc_data.shape)
     print(raw_data.shape)
 
-    raw_data = raw_data.transpose()[0]
+    raw_data = raw_data[0]
 
     # 数据清洗，插值完的cpc数据中依旧有脏数据，脏数据包括nan值和极小值
     for d in range(180):
