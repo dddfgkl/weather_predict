@@ -68,7 +68,7 @@ def read_origin_single_frame():
     first_frame = a_out[:87*54]
     first_frame = first_frame.reshape(87, 54)
     print(first_frame.shape)
-    plot_single_image(first_frame, 'first_frame.jpg')
+    plot_single_image(first_frame, 'first_frame_1.jpg')
 
 def plot_origin_data():
     pass
