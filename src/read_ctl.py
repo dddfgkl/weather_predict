@@ -4,7 +4,9 @@ import csv
 from collections import namedtuple
 
 fileName = "/home/machong/PM25-work/Hind3_daily/predict_data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
+fileName_windows = "../../data/IAP41_Hindcast_SEasian_daily_Tmax_ens_mean_87x54x180x32.bin"
 ens_mean_file = "/home/machong/PM25-work/Hind3_daily/ens_mean.ctl"
+ens_mean_file_windows = "../../data/ens_mean.ctl"
 
 def read_from_ctl(fileName):
     if fileName is None:
@@ -92,7 +94,27 @@ class Grds:
         data = np.memmap(self.fileName, dtype="<f", mode="r", offset=beg*4, shape=end-beg)
         # ">f" : > 大小端问题; fortran direct and unformated 输出与C输出一样；
         print("data shape:", data.shape, type(data))
-        return np.array(data).reshape(self.nx, self.ny, self.nz,self.nt)
+        return self.reshape_mathod(data)
+
+    # 对一维的数据进行reshape，不同的数据需要自定义不同的reshape方式
+    def reshape_mathod(self, data):
+        y_line = []
+        now_index = 0
+        for y in range(32):
+            d_line = []
+            for d in range(180):
+                lon_line = []
+                for lon in range(54):
+                    lat_line = []
+                    for lat in range(87):
+                        lat_line.append(data[now_index])
+                        now_index += 1
+                    lon_line.append(lat_line)
+                d_line.append(lon_line)
+            y_line.append(d_line)
+        data = np.array(y_line)
+        print("#"*20, "data shape {}".format(data.shape))
+        return data
 
     def read_origin(self, name):
         ''' 读取变量，包含所有维度 '''
@@ -164,7 +186,7 @@ def unit_test():
     print(single_fram.shape)
     # a.plot_single_frame(single_fram, "single frame show")
     print(single_fram.shape)
-    store_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+    store_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
     f_store = h5py.File(store_file_path, 'w')
     f_store["bin_label"] = a_out
     f_store.close()
@@ -180,4 +202,5 @@ def main():
     print(single_fram.shape)
 
 if __name__ == '__main__':
-    main()
+    # main()
+    unit_test()
