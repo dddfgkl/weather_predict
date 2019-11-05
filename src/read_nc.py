@@ -88,7 +88,7 @@ def desc_all_ncFile(dir_path):
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
     print("over ")
-    return all_data
+    return np.array(all_data)
 
 def store_data_2_h5(store_path, data):
     h5_file = h5py.File(store_path, 'w')
