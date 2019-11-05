@@ -10,7 +10,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 # plt.switch_backend('Agg')
 
 def desc_h5_file():
-    raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
+    raw_cpc_file_path = "/home/datanfs/macong_data/32year_180day_cpc_data_filled.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
@@ -59,11 +59,6 @@ def plot_center():
     for y in range(32):
         mse = []
         for d in range(180):
-            for lat in range(54):
-                for lon in range(87):
-                    if cpc[y][d][lat][lon] < -100 or np.isnan(cpc[y][d][lat][lon]):
-                        cpc[y][d][lat][lon] = bin[y][d][lat][lon]
-
             mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
             # print(f"year {y} , day {d}, shape {cpc[y][d].shape}")
             # plot_image(cpc[y][d])
