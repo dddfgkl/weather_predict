@@ -77,8 +77,8 @@ batch_size = 16
 #loader_valid = DataLoader(validationset, batch_size=batch_size, shuffle=True, num_workers=16, drop_last=True)
 #loader_test = DataLoader(validationset, batch_size=batch_size, shuffle=True, num_workers=16, drop_last=True)
 
-train_path_macong = "/home/datanfs/macong_data/train_daqisuo_v2.h5"
-val_path_macong = "/home/datanfs/macong_data/valid_daqisuo_v2.h5"
+train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
 train_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/train_daqisuo_v2.h5"
 val_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/valid_daqisuo_v2.h5"
@@ -101,8 +101,8 @@ print("##### load dataset over #####")
 #height = 339
 #width = 432
 
-height = 87 #269
-width = 54 #239
+height = 54 #269
+width = 87 #239
 headers_length = 1
 input_dim = 10 #26
 n_layer = 2

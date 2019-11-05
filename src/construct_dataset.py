@@ -87,10 +87,12 @@ def construct_data(window = 6):
     raw_data = raw_data.transpose(2,3,1,0)
     print(raw_cpc.shape)
     print(raw_data.shape)
-    return
+
+    # after process: the shape is 54*87*180*32
+
     # state the path to store data
-    h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo_v2.h5', 'w')
-    h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo_v2.h5', 'w')
+    h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo.h5', 'w')
+    h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo.h5', 'w')
     # h5test = h5py.File(r'./test_daqisuo.h5', 'w')
 
     totol_label_nums = 32 * (180 - window + 1)
@@ -99,10 +101,10 @@ def construct_data(window = 6):
     # test_sample_nums = 0
 
 
-    train_input_shape = (train_sample_nums, window, 87, 54, 1)
-    train_target_shape = (train_sample_nums, 1, 87, 54)
-    val_input_shape = (val_sample_nums, window, 87, 54, 1)
-    val_target_shape = (val_sample_nums, 1, 87, 54)
+    train_input_shape = (train_sample_nums, window, 54, 87, 1)
+    train_target_shape = (train_sample_nums, 1, 54, 87)
+    val_input_shape = (val_sample_nums, window, 54, 87, 1)
+    val_target_shape = (val_sample_nums, 1, 54, 87)
     # test_input_shape = (1600, window * 2 + 1, 87, 54, 1)
     # test_target_shape = (1600, 1, 87, 54)
 
@@ -118,6 +120,7 @@ def construct_data(window = 6):
     val_cn = 0
     test_cn = 0
     if window % 2 != 0:
+        # if window is odd, you need to rewrite this block code
         window = window // 2
         for y in range(32):
             print(f"{y}, total 32")
@@ -146,13 +149,13 @@ def construct_data(window = 6):
             print(f"{y}, total 32")
             for d in range(left_window,180-right_window):
                 if train_cn < train_sample_nums:
-                    h5train["data"][train_cn,...] = raw_data[y][d-left_window:d+right_window+1].reshape(window, 87,54,1)
-                    h5train["label"][train_cn, ...] = raw_cpc[y][d].reshape(1,87,54)
+                    h5train["data"][train_cn,...] = raw_data[y][d-left_window:d+right_window+1].reshape(window, 54,87,1)
+                    h5train["label"][train_cn, ...] = raw_cpc[y][d].reshape(1,54,87)
                     train_cn += 1
                     continue
                 if val_cn < val_sample_nums:
-                    h5val["data"][val_cn, ...] = raw_data[y][d-left_window:d+right_window+1].reshape(window, 87,54,1)
-                    h5val["label"][val_cn, ...] = raw_cpc[y][d].reshape(1,87,54)
+                    h5val["data"][val_cn, ...] = raw_data[y][d-left_window:d+right_window+1].reshape(window, 54,87,1)
+                    h5val["label"][val_cn, ...] = raw_cpc[y][d].reshape(1,54,87)
                     val_cn += 1
                     continue
                 """
