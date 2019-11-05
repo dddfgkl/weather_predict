@@ -83,12 +83,11 @@ def construct_data(window = 6):
     print(raw_data[:][:][0][0])
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
-    raw_cpc = raw_cpc.transpose(3,2,0,1)
-    raw_data = raw_data.transpose(3,2,0,1)
+    raw_cpc = raw_cpc.transpose(3,2,1,0)
+    raw_data = raw_data.transpose(2,3,1,0)
     print(raw_cpc.shape)
     print(raw_data.shape)
-    if True:
-        return
+    return
     # state the path to store data
     h5train = h5py.File(r'/home/datanfs/macong_data/train_daqisuo_v2.h5', 'w')
     h5val = h5py.File(r'/home/datanfs/macong_data/valid_daqisuo_v2.h5', 'w')
