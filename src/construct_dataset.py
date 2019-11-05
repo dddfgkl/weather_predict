@@ -42,7 +42,7 @@ def fill_cpc_data():
 
     filled_store = h5py.File(filled_cpc_file_path, 'w')
     raw_cpc = raw_cpc.transpose(3,2,1,0)
-    raw_dat = raw_data.transpose(3,2,1,0)
+    raw_data = raw_data.transpose(3,2,1,0)
     print("cpc data shape, ", raw_cpc.shape)
     print("bin data label shape, ", raw_data.shape)
     filled_data = np.zeros(raw_cpc.shape)
