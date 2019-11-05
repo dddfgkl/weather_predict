@@ -47,7 +47,6 @@ def fill_cpc_data():
     print("bin data label shape, ", raw_data.shape)
     filled_data = np.zeros(raw_cpc.shape)
     print(filled_data.shape)
-    return
     nan_other = -100
 
     count_cpc = 0
