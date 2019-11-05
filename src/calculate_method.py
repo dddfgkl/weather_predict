@@ -52,20 +52,25 @@ def plot_origin_data_test():
 
 
 def plot_center():
-    x = [i for i in range(1981,1981+180)]
+    x = [i for i in range(180)]
     cpc, bin = desc_h5_file()
     year_mse = []
     # mse = []
     for y in range(32):
         mse = []
         for d in range(180):
+            for lat in range(54):
+                for lon in range(87):
+                    if cpc[y][d][lat][lon] < -100 or np.isnan(cpc[y][d][lat][lon]):
+                        cpc[y][d][lat][lon] = bin[y][d][lat][lon]
+
             mse.append(sklearn_MSE(cpc[y][d], bin[y][d]))
             # print(f"year {y} , day {d}, shape {cpc[y][d].shape}")
             # plot_image(cpc[y][d])
             # plot_image(bin[y][d])
         # year_mse.append(sum(mse)/len(mse)
         plot_graph(x, mse)
-        break
+        # break
     # mse = []
 
 def plot_image_test():
