@@ -16,7 +16,7 @@ store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
 store_path2 = "/home/datanfs/macong_data/100day_data.h5"
 store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
 fixed_cpc_nc_dir_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax"
-trim_cpc_nc_dir_path = "/home/datanfs/macong_data/180day_everyday_label_data_v2.h5"
+trim_cpc_nc_dir_path = "/home/datanfs/macong_data/32year_180day_cpc_data_not_filled.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
@@ -153,7 +153,7 @@ def unit_test():
     # desc_single_h5_file(store_file_path3)
     all_data = desc_all_ncFile(fixed_cpc_nc_dir_path)
     print("data shape", all_data.shape)
-    # store_data_2_h5(trim_cpc_nc_dir_path, all_data)
+    store_data_2_h5(trim_cpc_nc_dir_path, all_data)
     print("unit test over!")
 
 def main():
@@ -173,4 +173,5 @@ def main():
     print("main thread over")
 
 if __name__ == '__main__':
-    main()
+    # main()
+    unit_test()
