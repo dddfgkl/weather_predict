@@ -59,7 +59,7 @@ def plot_single_image(matrix, file_name=None):
     plt.title(file_name, y=-0.1)
     # plt.show()
 
-    # ssh链接开发机的时候不能显示，所以需要存储一下，
+    # ssh链接跳板机链接开发机的时候不能显示，所以需要存储一下，
     if file_name == None:
         # plt.savefig('test.jpg')
         pass
