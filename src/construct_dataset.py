@@ -87,7 +87,7 @@ def construct_data(window = 6):
     # raw_data = raw_data.transpose(1,0,2,3)
     print(raw_cpc.shape)
     print(raw_data.shape)
-    return
+
     # after process: the shape is 54*87*180*32
 
     # state the path to store data
