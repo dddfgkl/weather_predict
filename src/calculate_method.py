@@ -141,7 +141,8 @@ def plot_graph(x, y, file_name=None):
     if file_name != None:
         plt.savefig(file_name)
     else:
-        plt.savefig('./test1.jpg')
+        # plt.savefig('./test1.jpg')p
+        pass
 
 def plot_image(matrix, file_name=None):
     # plt.xlim()
