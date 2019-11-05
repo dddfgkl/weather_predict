@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
 from matplotlib.backends.backend_pdf import PdfPages
+import calculate_method
 
 def plot_image_from_raw_data():
-    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
+    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1982.nc"
     # raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
 
@@ -18,7 +19,7 @@ def plot_image_from_raw_data():
     print(cpc_data.shape)
     print(raw_data.shape)
 
-    raw_data = raw_data[0]
+    raw_data = raw_data[1]
 
     # 数据清洗，插值完的cpc数据中依旧有脏数据，脏数据包括nan值和极小值
     for d in range(180):
@@ -42,7 +43,7 @@ def plot_image_from_raw_data():
     print(mse)
     print(x)
 
-    plot_graph(x, mse, './')
+    calculate_method.plot_graph(x, mse)
 
     print("plot test over")
 
