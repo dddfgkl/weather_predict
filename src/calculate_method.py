@@ -11,18 +11,14 @@ from matplotlib.backends.backend_pdf import PdfPages
 
 def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/180day_everyday_label_data_filled_v2.h5"
-    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
     raw_cpc = read_h5(raw_cpc_file_path, "cpc")
     raw_data = read_h5(raw_data_file_path, "bin_label")
-    print("basic info")
-    print("cpc data shape, ", raw_cpc.shape)
-    print(raw_cpc[0][0][:][:])
-    print("bin data label shape, ", raw_data.shape)
-    print(raw_data[:][:][0][0])
+    print("#"*10, "basic info")
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
     raw_cpc = raw_cpc.transpose(3, 2, 0, 1)
-    raw_data = raw_data.transpose(3, 2, 0, 1)
+    # raw_data = raw_data.transpose(3, 2, 0, 1)
     print(raw_cpc.shape)
     print(raw_data.shape)
     return raw_cpc, raw_data
@@ -68,7 +64,7 @@ def plot_center():
             # plot_image(cpc[y][d])
             # plot_image(bin[y][d])
         # year_mse.append(sum(mse)/len(mse)
-        plot_graph(x, mse, './')
+        plot_graph(x, mse)
         break
     # mse = []
 
@@ -181,6 +177,6 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_graph('./')
-    unit_test()
-    # plot_center()
+    # unit_test()
+    plot_center()
     # plot_image_test()
