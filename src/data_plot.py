@@ -9,7 +9,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 import calculate_method
 
 def plot_image_from_raw_data():
-    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1982.nc"
+    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1983.nc"
     # raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
 
@@ -19,7 +19,7 @@ def plot_image_from_raw_data():
     print(cpc_data.shape)
     print(raw_data.shape)
 
-    raw_data = raw_data[1]
+    raw_data = raw_data[2]
 
     # 数据清洗，插值完的cpc数据中依旧有脏数据，脏数据包括nan值和极小值
     for d in range(180):
