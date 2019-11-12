@@ -66,6 +66,24 @@ def plot_single_image(matrix, file_name=None):
     else:
         plt.savefig(file_name)
 
+learning_curve_path = '../nn_model/record/train_record.h5'
+
+def read_learning_record():
+    x = read_h5(learning_curve_path, 'epoch_h5')
+    y = read_h5(learning_curve_path, 'train_loss_h5')
+    plot_learning_curve(x, y)
+    print("plot over!")
+
+
+def plot_learning_curve(x, y):
+    plt.figure()
+    # plt.title("learning")
+    plt.scatter(x, y)
+    plt.title()
+    plt.show()
+
+    pass
+
 def read_origin_single_frame():
     import read_ctl
     a = read_ctl.Grds(read_ctl.ens_mean_file_windows, read_ctl.fileName_windows)
@@ -80,8 +98,9 @@ def plot_origin_data():
     pass
 
 def unit_test():
-    plot_image_from_raw_data()
+    # plot_image_from_raw_data()
     # read_origin_single_frame()
+    read_learning_record()
 
 if __name__ == '__main__':
     unit_test()
