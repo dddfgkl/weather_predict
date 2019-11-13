@@ -102,7 +102,9 @@ def read_after_process_data():
     b = read_h5(train_path_macong, 'label')
     print("train data shape", a.shape)
     print("train label shape", b.shape)
-    plot_single_image(a[0][0][:][:][0], 'test1.jpg')
+    c = a[0][0][:][:][0]
+    print(c.shape)
+    plot_single_image(c, 'test1.jpg')
 
 def plot_origin_data():
     pass
