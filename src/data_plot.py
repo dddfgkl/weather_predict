@@ -105,6 +105,7 @@ def read_after_process_data():
     c = a[0][0][:][:][0]
     print(a[0].shape)
     print(a[0][0].shape)
+    print(a[0][0][:][:].shape)
     print(c.shape)
     plot_single_image(c, 'test1.jpg')
 
