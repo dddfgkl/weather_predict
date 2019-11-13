@@ -102,7 +102,7 @@ def read_after_process_data():
     b = read_h5(train_path_macong, 'label')
     print("train data shape", a.shape)
     print("train label shape", b.shape)
-    c = a[0][0][:][:][0]
+    c = a[0][0][:][:].transpose(2,0,1)[0]
     print(a[0].shape)
     print(a[0][0].shape)
     print(a[0][0][:][:].shape)
