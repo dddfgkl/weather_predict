@@ -94,13 +94,23 @@ def read_origin_single_frame():
     print(first_frame.shape)
     plot_single_image(first_frame)
 
+
+def read_after_process_data():
+    train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+    val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
+    a = read_h5(train_path_macong, 'data')
+    b = read_h5(train_path_macong, 'label')
+    print("train data shape", a.shape)
+    print("train label shape", b.shape)
+
 def plot_origin_data():
     pass
 
 def unit_test():
     # plot_image_from_raw_data()
     # read_origin_single_frame()
-    read_learning_record()
+    # read_learning_record()
+    read_after_process_data()
 
 if __name__ == '__main__':
     unit_test()
