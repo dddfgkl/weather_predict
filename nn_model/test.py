@@ -90,8 +90,11 @@ loader_valid =  DataLoader(h5val, batch_size=1,shuffle=False,num_workers=1)
 loader_test =  DataLoader(h5test, batch_size=1,shuffle=False,num_workers=1)
 
 
-height = 339 #269
-width = 432 #239
+# height = 339 #269
+# width = 432 #239
+
+height = 54 #269
+width = 87 #239
 input_dim = 10 #26
 n_layer = 2
 hidden_size = [64, 128]
