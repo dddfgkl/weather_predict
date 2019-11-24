@@ -16,10 +16,10 @@ from torch.nn.parameter import Parameter
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader
 # import tensorwatch as tw
-import torchvision
-from torchvision import transforms
+# import torchvision
+# from torchvision import transforms
 from dataset import AirDataset,H5Dataset
-from torchsummary import summary
+# from torchsummary import summary
 #from tensorboardX import SummaryWriter
 from conf import settings
 from utils import *
