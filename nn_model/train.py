@@ -28,9 +28,9 @@ torch.manual_seed(2018)
 torch.cuda.manual_seed(2018)
 
 from airConvlstm import *
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 #device = torch.device('cpu')
 
 
