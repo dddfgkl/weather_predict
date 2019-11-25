@@ -82,7 +82,7 @@ train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
 val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
 train_path_zhulifa = "/home/zhulifa/python-dev/macong_data/train_daqisuo.h5"
-val_path_zhulifa = "/home/zhulifa/python-dev/macong_data/valid_daqisuo.h55"
+val_path_zhulifa = "/home/zhulifa/python-dev/macong_data/valid_daqisuo.h5"
 
 train_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/train_daqisuo_v2.h5"
 val_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/valid_daqisuo_v2.h5"
