@@ -81,6 +81,9 @@ batch_size = 16
 train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
 val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
+train_path_zhulifa = "/home/zhulifa/python-dev/macong_data/train_daqisuo.h5"
+val_path_zhulifa = "/home/zhulifa/python-dev/macong_data/valid_daqisuo.h55"
+
 train_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/train_daqisuo_v2.h5"
 val_path_52 = "/home/zhulifa/PM25-work/daqisuo_data/valid_daqisuo_v2.h5"
 
@@ -89,8 +92,8 @@ val_path = "/home/datanfs/anhui/PM25Pred/valid_daqisuo.h5"
 test_path = "./test_daqisuo.h5"
 
 print("##### start load dataset #####")
-h5train = H5Dataset(train_path_macong)
-h5val = H5Dataset(val_path_macong)
+h5train = H5Dataset(train_path_zhulifa)
+h5val = H5Dataset(val_path_zhulifa)
 # h5test = H5Dataset(test_path)
 
 loader_train = DataLoader(h5train, batch_size=batch_size,shuffle=True,num_workers=16,drop_last=True)
