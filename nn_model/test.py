@@ -139,7 +139,7 @@ scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=weight_decay)
 
 resume=True
 if resume:
-    path=r"convlstm/model/notebook_daqisuo/new_epoch_1.pt"
+    path=r"./convlstm/model/notebook_daqisuo/new_epoch_1.pt"
     checkpoint = torch.load(path)
     air.load_state_dict(checkpoint['model'])
 avgError=0
