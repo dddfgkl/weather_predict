@@ -21,6 +21,13 @@ def desc_h5_file():
 
     raw_cpc = read_h5(train_path_macong, "data")
     raw_data = read_h5(train_path_macong, "label")
+
+    for x in range(4800):
+        for y in range(6):
+            for lat in range(54):
+                for lot in range(87):
+                    if raw_cpc[x][y][lat][lot][0] < -100 or raw_cpc[x][y][lat][lot][0] > 100:
+                        print("too low or too high")
     print("#"*10, "basic info")
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
