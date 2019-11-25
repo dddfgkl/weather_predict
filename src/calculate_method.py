@@ -12,12 +12,16 @@ from matplotlib.backends.backend_pdf import PdfPages
 def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/32year_180day_cpc_data_filled.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
-    raw_cpc = read_h5(raw_cpc_file_path, "cpc")
-    raw_data = read_h5(raw_data_file_path, "bin_label")
+
+    train_path_zhulifa = "/home/zhulifa/python-dev/macong_data/train_daqisuo.h5"
+    val_path_zhulifa = "/home/zhulifa/python-dev/macong_data/valid_daqisuo.h5"
+
+    raw_cpc = read_h5(train_path_zhulifa, "data")
+    raw_data = read_h5(train_path_zhulifa, "label")
     print("#"*10, "basic info")
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
-    raw_cpc = raw_cpc.transpose(3, 2, 1, 0)
+    # raw_cpc = raw_cpc.transpose(3, 2, 1, 0)
     # raw_data = raw_data.transpose(3, 2, 0, 1)
     print(raw_cpc.shape)
     print(raw_data.shape)
@@ -178,5 +182,6 @@ def unit_test():
 if __name__ == '__main__':
     # plot_graph('./')
     # unit_test()
-    plot_center()
+    # plot_center()
+    desc_h5_file
     # plot_image_test()
