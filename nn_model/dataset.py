@@ -21,7 +21,9 @@ class H5Dataset(Dataset):
         super(H5Dataset, self).__init__()
         hfdata = h5py.File(h5f_path)
         self.data = hfdata.get('data')
+        self.data = np.array(self.data)
         self.target = hfdata.get('label')
+        self.target = np.array(self.target)
         self.patch_size=patch_size
 
     def __getitem__(self, index):
