@@ -187,5 +187,5 @@ if __name__ == '__main__':
     # plot_graph('./')
     # unit_test()
     # plot_center()
-    desc_h5_file
+    desc_h5_file()
     # plot_image_test()
