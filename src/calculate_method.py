@@ -180,6 +180,7 @@ def unit_test():
     plot_origin_data_test()
 
 if __name__ == '__main__':
+    print("test!git")
     # plot_graph('./')
     # unit_test()
     # plot_center()
