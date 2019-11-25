@@ -86,8 +86,8 @@ test_path = "./test_daqisuo.h5"
 train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
 val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
-h5train = H5Dataset(train_path)
-h5val = H5Dataset(val_path)
+h5train = H5Dataset(train_path_macong)
+h5val = H5Dataset(val_path_macong)
 # h5test = H5Dataset(test_path)
 
 loader_train =  DataLoader(h5train, batch_size=1,shuffle=False,num_workers=1)
