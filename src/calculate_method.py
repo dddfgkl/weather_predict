@@ -13,11 +13,14 @@ def desc_h5_file():
     raw_cpc_file_path = "/home/datanfs/macong_data/32year_180day_cpc_data_filled.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
 
+    train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+    val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
+
     train_path_zhulifa = "/home/zhulifa/python-dev/macong_data/train_daqisuo.h5"
     val_path_zhulifa = "/home/zhulifa/python-dev/macong_data/valid_daqisuo.h5"
 
-    raw_cpc = read_h5(train_path_zhulifa, "data")
-    raw_data = read_h5(train_path_zhulifa, "label")
+    raw_cpc = read_h5(train_path_macong, "data")
+    raw_data = read_h5(train_path_macong, "label")
     print("#"*10, "basic info")
     # transpose the data to the shape you want
     # present shape is 87x54x180x32
