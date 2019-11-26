@@ -47,6 +47,24 @@ def plot_image_from_raw_data():
 
     print("plot test over")
 
+def plot_loss_rate(x, y):
+    plt.figure()
+    # x = [1,2,3,4,5]
+    # y = [2,3,1,5,7]
+
+    # implement your awesome plot
+    plt.xlim()
+    plt.ylim()
+
+    plt.xlabel("epoch")
+    plt.ylabel("y")
+
+    plt.scatter(x, y)
+    plt.plot(x, y)
+    plt.title("epoch loss")
+    plt.show()
+
+
 def plot_single_image(matrix, file_name=None):
     plt.switch_backend('agg')
     # plt.xlim()
@@ -112,6 +130,13 @@ def read_after_process_data():
 def plot_origin_data():
     pass
 
+def plot_center():
+    record_epoch = read_h5("/home/zhulifa/python-dev/weather_predict/nn_model/record/train_record.h5", "epoch_h5")
+    record_train_loss_h5 = read_h5("/home/zhulifa/python-dev/weather_predict/nn_model/record/train_record.h5", "train_loss_h5")
+    # record_train_loss_h5 = read_h5()
+    plot_loss_rate(record_epoch, record_train_loss_h5)
+    print("hello world")
+
 def unit_test():
     # plot_image_from_raw_data()
     # read_origin_single_frame()
@@ -119,4 +144,4 @@ def unit_test():
     read_after_process_data()
 
 if __name__ == '__main__':
-    unit_test()
+    plot_center()
