@@ -86,8 +86,11 @@ test_path = "./test_daqisuo.h5"
 train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
 val_path_macong = "/home/datanfs/macong_data/valid_daqisuo.h5"
 
-h5train = H5Dataset(train_path_macong)
-h5val = H5Dataset(val_path_macong)
+train_path_zhulifa = "/home/zhulifa/python-dev/macong_data/train_daqisuo.h5"
+val_path_zhulifa = "/home/zhulifa/python-dev/macong_data/valid_daqisuo.h5"
+
+h5train = H5Dataset(train_path_zhulifa)
+h5val = H5Dataset(val_path_zhulifa)
 # h5test = H5Dataset(test_path)
 
 loader_train =  DataLoader(h5train, batch_size=1,shuffle=False,num_workers=1)
@@ -145,7 +148,7 @@ if resume:
 avgError=0
 cnt=0
 with torch.no_grad():
-    for i_batch, sample_batched in enumerate(loader_train,1):
+    for i_batch, sample_batched in enumerate(loader_valid,1):
         cnt+=1
         test_error = test(sample_batched, air, nn.MSELoss(),i_batch)
         print('test loss = {}'.format(test_error))
