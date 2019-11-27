@@ -159,7 +159,7 @@ def plot_processed_data():
         plt.suptitle('Multi_Image')
         for y in range(6):
             plt.subplot(1, 7, y+1), plt.title('Observe {}'.format(y+1))
-            plt.imshow(data[x][y], cmap=plt.cm.gray), plt.axis('off')
+            plt.imshow(data[x][y][:][:][0], cmap=plt.cm.gray), plt.axis('off')
         plt.subplot(1, 7, 7), plt.title('Label')
         plt.imshow(label[x], cmap=plt.cm.gray), plt.axis('off')
         plt.savefig("./outPic/output_" + str(cnt) + ".png")
