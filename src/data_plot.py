@@ -7,6 +7,7 @@ from construct_dataset import read_h5
 from read_nc import desc_single_ncFile
 from matplotlib.backends.backend_pdf import PdfPages
 import calculate_method
+import h5py
 
 def plot_image_from_raw_data():
     cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1983.nc"
@@ -137,11 +138,24 @@ def plot_center():
     plot_loss_rate(record_epoch, record_train_loss_h5)
     print("hello world")
 
+def plot_processed_data():
+    train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+    if os.path.exists(train_path_macong) == False:
+        print("file not exist")
+        raise FileExistsError
+    f = h5py.File(train_path_macong, 'r')
+    data = f['data'][:]
+    label = f['label'][:]
+    print(data.shape)
+    print(label.shape)
+
 def unit_test():
     # plot_image_from_raw_data()
     # read_origin_single_frame()
     # read_learning_record()
-    read_after_process_data()
+    # read_after_process_data()
+    plot_processed_data()
 
 if __name__ == '__main__':
-    plot_center()
+    # plot_center()
+    unit_test()
