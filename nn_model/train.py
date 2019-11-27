@@ -28,9 +28,9 @@ torch.manual_seed(2018)
 torch.cuda.manual_seed(2018)
 
 from airConvlstm import *
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 #device = torch.device('cpu')
 
 
@@ -113,7 +113,7 @@ n_layer = 2
 hidden_size = [64, 128]
 output_dim = 1
 n_epoch = 1000
-learning_rate = 1e-4
+learning_rate = 1e-3
 weight_decay = 0.9
 weight_decay_epoch = 10
 direc = './convlstm/model/notebook_daqisuo/'
@@ -148,7 +148,7 @@ air.to(device)
 
 
 optimizer = optim.Adam(air.parameters(), lr=learning_rate)
-scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=weight_decay)
+scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=weight_decay)
 start = time.time()
 
 min_loss = np.inf
