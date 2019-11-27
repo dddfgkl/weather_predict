@@ -149,6 +149,23 @@ def plot_processed_data():
     print(data.shape)
     print(label.shape)
 
+    # plot method
+    cnt = 0
+    for x in range(4900):
+        print(f"now is process {cnt}")
+        plt.figure()
+        plt.suptitle('Multi_Image')
+        for y in range(6):
+            plt.subplot(1, 7, i+1), plt.title('Observe {}'.format(i+1))
+            plt.imshow(data[i][0], cmap=plt.cm.gray), plt.axis('off')
+        plt.subplot(1, 7, 7), plt.title('Label {}'.format(i + 1))
+        plt.imshow(label[i], cmap=plt.cm.gray), plt.axis('off')
+        plt.savefig("./outPic/output_" + str(cnt) + ".png")
+        cnt += 1
+        if cnt > 2:
+            break
+    print('plot over')
+
 def unit_test():
     # plot_image_from_raw_data()
     # read_origin_single_frame()
