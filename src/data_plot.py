@@ -160,7 +160,7 @@ def plot_processed_data():
         for y in range(6):
             plt.subplot(1, 7, i+1), plt.title('Observe {}'.format(i+1))
             plt.imshow(data[i][0], cmap=plt.cm.gray), plt.axis('off')
-        plt.subplot(1, 7, 7), plt.title('Label {}'.format(i + 1))
+        plt.subplot(1, 7, 7), plt.title('Label')
         plt.imshow(label[i], cmap=plt.cm.gray), plt.axis('off')
         plt.savefig("./outPic/output_" + str(cnt) + ".png")
         cnt += 1
