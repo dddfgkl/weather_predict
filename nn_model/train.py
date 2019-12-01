@@ -113,7 +113,7 @@ input_dim = 10 #26
 n_layer = 2
 hidden_size = [64, 128]
 output_dim = 1
-n_epoch = 1
+n_epoch = 1000
 learning_rate = 1e-3
 weight_decay = 0.9
 weight_decay_epoch = 10
@@ -208,7 +208,7 @@ for epoch in range(start_epoch, n_epoch + 1):
 file_record["epoch_h5"] = epoch_h5
 file_record["train_loss_h5"] = train_loss_h5
 file_record["train_lr_h5"] = train_lr_h5
-file_record["time_cost_h5"] = time_cost_h5
+# file_record["time_cost_h5"] = time_cost_h5
 file_record["validation_loss_h5"] = validation_loss_h5
 file_record.close()
 
