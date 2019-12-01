@@ -1,3 +1,4 @@
+# coding=utf8
 import h5py
 import torch
 import numbers
