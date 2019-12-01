@@ -152,6 +152,7 @@ def plot_processed_data():
     # plot method
     cnt = 0
     plt.switch_backend('agg')
+    pre = []
     for x in range(4900):
         print(f"now is process {cnt}")
         # plt.switch_backend('agg')
