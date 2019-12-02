@@ -40,24 +40,36 @@ def plot_image_from_raw_data():
 
     cnt = 0
     for d in range(180):
+        if d >= 9:
+            break
         # if d not in select_day:
         #    continue
         # mse.append(mean_squared_error(cpc_data[d], raw_data[d]))
         # plot_single_image(cpc_data[d], "1981_cpc_{}_day.jpg".format(d))
         # plot_single_image(raw_data[d], "1981_predict_{}_day.jpg".format(d))
-        plt.subplot(2, 3, d + 1), plt.title('Observe {}'.format(d + 1))
+        plt.subplot(3, 3, d + 1), plt.title('Observe {}'.format(d + 1))
         sc = plt.imshow(np.squeeze(raw_data[d]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
+        cnt += 1
+    plt.savefig("./output_observe"+ ".png")
 
-        plt.subplot(2, 3, d + 4), plt.title('cpc {}'.format(d + 1))
+    plt.figure()
+    plt.suptitle('Multi_Image')
+    for d in range(180):
+        if d >= 9:
+            break
+        # if d not in select_day:
+        #    continue
+        # mse.append(mean_squared_error(cpc_data[d], raw_data[d]))
+        # plot_single_image(cpc_data[d], "1981_cpc_{}_day.jpg".format(d))
+        # plot_single_image(raw_data[d], "1981_predict_{}_day.jpg".format(d))
+        plt.subplot(3, 3, d + 1), plt.title('cpc {}'.format(d + 1))
         sc = plt.imshow(np.squeeze(cpc_data[d]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
-        if cnt >= 2:
-            break
         cnt += 1
-    plt.savefig("./output_"+ ".png")
+    plt.savefig("./output_cpc"+ ".png")
 
     # calculate_method.plot_graph(x, mse)
 
@@ -223,5 +235,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_center()
-    unit_test()
-    # plot_image_from_raw_data()
+    # unit_test()
+    plot_image_from_raw_data()
