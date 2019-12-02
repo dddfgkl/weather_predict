@@ -165,7 +165,7 @@ def plot_processed_data():
         plt.imshow(np.squeeze(label[x]), cmap=plt.cm.gray), plt.axis('off')
         plt.savefig("./outPic/output_" + str(cnt) + ".png")
         cnt += 1
-        if cnt > 2:
+        if cnt > 6:
             break
     print('plot over')
 
