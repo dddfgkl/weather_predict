@@ -162,7 +162,8 @@ def plot_processed_data():
             plt.subplot(3, 3, y+1), plt.title('Observe {}'.format(y+1))
             plt.imshow(np.squeeze(data[x][y]), cmap=plt.cm.gray), plt.axis('off')
         plt.subplot(3, 3, 7), plt.title('Label')
-        plt.imshow(np.squeeze(label[x]), cmap=plt.cm.gray), plt.axis('off')
+        sc = plt.imshow(np.squeeze(label[x]), cmap=plt.cm.gray), plt.axis('off')
+        plt.colorbar(sc)
         plt.savefig("./outPic/output_" + str(cnt) + ".png")
         cnt += 1
         if cnt > 6:
