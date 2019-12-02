@@ -196,4 +196,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_center()
-    unit_test()
+    # unit_test()
+    plot_image_from_raw_data()
