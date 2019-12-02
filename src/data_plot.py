@@ -34,6 +34,7 @@ def plot_image_from_raw_data():
     # 选择部分天数进行画图
     select_day = [0,1,2,3,4,5,6,7,8,9,10,175,176,177,178,179]
     select_day = []
+    plt.switch_backend('agg')
     plt.figure()
     plt.suptitle('Multi_Image')
 
