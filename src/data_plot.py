@@ -34,17 +34,31 @@ def plot_image_from_raw_data():
     # 选择部分天数进行画图
     select_day = [0,1,2,3,4,5,6,7,8,9,10,175,176,177,178,179]
     select_day = []
+    plt.figure()
+    plt.suptitle('Multi_Image')
+
+    cnt = 0
     for d in range(180):
         # if d not in select_day:
         #    continue
-        mse.append(mean_squared_error(cpc_data[d], raw_data[d]))
+        # mse.append(mean_squared_error(cpc_data[d], raw_data[d]))
         # plot_single_image(cpc_data[d], "1981_cpc_{}_day.jpg".format(d))
         # plot_single_image(raw_data[d], "1981_predict_{}_day.jpg".format(d))
+        plt.subplot(2, 6, d), plt.title('Observe {}'.format(d + 1))
+        sc = plt.imshow(np.squeeze(raw_data[d]), cmap=plt.cm.gray)
+        plt.axis('off')
+        plt.colorbar(sc)
 
-    print(mse)
-    print(x)
+        plt.subplot(2, 6, d + 6), plt.title('cpc {}'.format(d + 1))
+        sc = plt.imshow(np.squeeze(cpc_data[d]), cmap=plt.cm.gray)
+        plt.axis('off')
+        plt.colorbar(sc)
+        if cnt > 6:
+            break
+        cnt += 1
+    plt.savefig("./output_"+ ".png")
 
-    calculate_method.plot_graph(x, mse)
+    # calculate_method.plot_graph(x, mse)
 
     print("plot test over")
 
