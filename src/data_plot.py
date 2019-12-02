@@ -155,8 +155,22 @@ def plot_center():
 
 def plot_processed_data():
     train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+
     cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
+
     cpc_data = desc_single_ncFile(cpc_1981_path, 'tmax')
+    raw_data = read_h5(raw_data_file_path, "bin_label")
+    print(cpc_data.shape)
+    print(raw_data.shape)
+
+    raw_data = raw_data[0]
+
+    for d in range(180):
+        for lat in range(54):
+            for lon in range(87):
+                if cpc_data[d][lat][lon] < -100 or np.isnan(cpc_data[d][lat][lon]):
+                    cpc_data[d][lat][lon] = raw_data[d][lat][lon]
 
     if os.path.exists(train_path_macong) == False:
         print("file not exist")
