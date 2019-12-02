@@ -50,7 +50,7 @@ def plot_image_from_raw_data():
         plt.axis('off')
         plt.colorbar(sc)
 
-        plt.subplot(2, 3, d + 7), plt.title('cpc {}'.format(d + 1))
+        plt.subplot(2, 3, d + 4), plt.title('cpc {}'.format(d + 1))
         sc = plt.imshow(np.squeeze(cpc_data[d]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
