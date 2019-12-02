@@ -54,7 +54,7 @@ def plot_image_from_raw_data():
         sc = plt.imshow(np.squeeze(cpc_data[d]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
-        if cnt > 6:
+        if cnt >= 6:
             break
         cnt += 1
     plt.savefig("./output_"+ ".png")
