@@ -194,7 +194,7 @@ def plot_processed_data():
         plt.axis('off')
         plt.colorbar(sc)
 
-        plt.savefig("./outPic/output_" + str(cnt) + ".png")
+        plt.savefig("./outPic/Noutput_" + str(cnt) + ".png")
         cnt += 1
         if cnt > 6:
             break
