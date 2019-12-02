@@ -155,9 +155,9 @@ def plot_center():
 
 def plot_processed_data():
     train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
-    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
-    raw_data = read_h5(raw_data_file_path, "bin_label")
-    raw_data = raw_data[0]
+    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
+    cpc_data = desc_single_ncFile(cpc_1981_path, 'tmax')
+
     if os.path.exists(train_path_macong) == False:
         print("file not exist")
         raise FileExistsError
@@ -187,7 +187,7 @@ def plot_processed_data():
         plt.colorbar(sc)
 
         plt.subplot(3, 3, 8), plt.title('Label_raw')
-        sc = plt.imshow(np.squeeze(raw_data[3+x]), cmap=plt.cm.gray)
+        sc = plt.imshow(np.squeeze(cpc_data[3+x]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
 
