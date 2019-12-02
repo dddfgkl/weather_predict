@@ -166,6 +166,7 @@ def plot_processed_data():
     label = f['label'][:]
     print(data.shape)
     print(label.shape)
+    print(cpc_data.shape)
 
     # plot method
     cnt = 0
