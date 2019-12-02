@@ -155,6 +155,9 @@ def plot_center():
 
 def plot_processed_data():
     train_path_macong = "/home/datanfs/macong_data/train_daqisuo.h5"
+    raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
+    raw_data = read_h5(raw_data_file_path, "bin_label")
+    raw_data = raw_data[0]
     if os.path.exists(train_path_macong) == False:
         print("file not exist")
         raise FileExistsError
@@ -182,6 +185,12 @@ def plot_processed_data():
         sc = plt.imshow(np.squeeze(label[x]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
+
+        plt.subplot(3, 3, 8), plt.title('Label_raw')
+        sc = plt.imshow(np.squeeze(raw_data[3+x]), cmap=plt.cm.gray)
+        plt.axis('off')
+        plt.colorbar(sc)
+
         plt.savefig("./outPic/output_" + str(cnt) + ".png")
         cnt += 1
         if cnt > 6:
@@ -197,5 +206,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_center()
-    # unit_test()
-    plot_image_from_raw_data()
+    unit_test()
+    # plot_image_from_raw_data()
