@@ -188,6 +188,7 @@ def plot_processed_data():
         plt.colorbar(sc)
 
         plt.subplot(3, 3, 8), plt.title('Label_raw')
+        print(cpc_data[3+x].shape)
         sc = plt.imshow(np.squeeze(cpc_data[3+x]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
