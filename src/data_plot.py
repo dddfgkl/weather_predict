@@ -183,7 +183,7 @@ def plot_processed_data():
             plt.axis('off')
             plt.colorbar(sc)
         plt.subplot(3, 3, 7), plt.title('Label')
-        print(np.squeeze(label[x]))
+        print(np.squeeze(label[x].shape))
         sc = plt.imshow(np.squeeze(label[x]), cmap=plt.cm.gray)
         plt.axis('off')
         plt.colorbar(sc)
