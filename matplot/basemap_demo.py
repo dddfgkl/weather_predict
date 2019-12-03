@@ -22,11 +22,20 @@ def demo1():
     lat_0 = lats.mean()
     output_data = nc_data.variables['tmax'][:][0]
 
-    map = Basemap(lat_0=lat_0, lon_0=lon_0, projection='lcc', llcrnrlon=50,urcrnrlon=180,
+    m = Basemap(lat_0=lat_0, lon_0=lon_0, projection='lcc', llcrnrlon=50,urcrnrlon=180,
              llcrnrlat=-20,urcrnrlat=65) #Basemap类有很多属性，这里全都使用默认参数
 
     # 画图
-    map.drawcoastlines()
+    m.drawcoastlines()
+    xi, yi = m(lons, lats)
+    cs = m.contourf(xi, yi, output_data, cmap=plt.cm.get_cmap('jet'))
+    cbar = m.colorbar(cs, location='right', pad='5%', )
+    cbar.set_label('μg/m$^3$', fontsize=22)
+    cbar.ax.tick_params(labelsize=24)
+    plt.title('PM25', fontsize=25)
+    plt.xticks(fontsize=24, )
+    plt.yticks(fontsize=24, )
+    plt.savefig('pm25')
 
     # 显示结果
     plt.show()
