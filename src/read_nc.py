@@ -18,7 +18,7 @@ store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
 
 fixed_cpc_nc_dir_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax"
 fixed_cpc_nc_prec_path = "/home/datanfs/liutao_backup1/HindFix/Hind3_label/Prec"
-single_cpc_nc_pred_path = "/home/datanfs/liutao_backup1/HindFix/Hind3_label/Prec/prec_lbl.1981.nc"
+single_cpc_nc_prec_path = "/home/datanfs/liutao_backup1/HindFix/Hind3_label/Prec/prec_lbl.1981.nc"
 
 trim_cpc_nc_dir_path = "/home/datanfs/macong_data/32year_180day_cpc_data_not_filled.h5"
 trim_cpc_nc_prec_path = "/home/datanfs/macong_data/32year_180day_cpc_pred_data.h5"
@@ -88,7 +88,7 @@ def desc_all_ncFile(dir_path):
     all_available_files = sorted(all_available_files)
     for i, file in enumerate(all_available_files):
         print("-------file Name--------", file)
-        datas = desc_single_ncFile(os.path.join(dir_path, file), "tmax")
+        datas = desc_single_ncFile(os.path.join(dir_path, file), "precip")
         all_data.append(datas)
         print("\n\n")
     print("sum of the nc file ", len(all_available_files))
@@ -156,16 +156,16 @@ def desc_single_h5_file(h5_file_path):
 def unit_test():
     # extract_year_from_nc_to_h5(dir_path, store_path2)'
     # desc_single_h5_file(store_file_path3)
-    all_data = desc_all_ncFile(fixed_cpc_nc_dir_path)
+    all_data = desc_all_ncFile(fixed_cpc_nc_prec_path)
     print("data shape", all_data.shape)
-    store_data_2_h5(trim_cpc_nc_dir_path, all_data)
+    store_data_2_h5(trim_cpc_nc_prec_path, all_data)
     print("unit test over!")
 
 def main():
     # unit_test()
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
-    desc_single_ncFile(single_cpc_nc_pred_path)
+    desc_single_ncFile(single_cpc_nc_prec_path)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
@@ -179,4 +179,5 @@ def main():
 
 if __name__ == '__main__':
     # main()
-    main()
+    # main()
+    unit_test()
