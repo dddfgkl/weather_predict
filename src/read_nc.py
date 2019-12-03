@@ -167,7 +167,12 @@ def main():
     # print(data)
     basic_nc_file1 = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1982.nc"
     data = desc_single_ncFile(basic_nc_file1, 'tmax')
-    print(data.shape)
+    print(data.shape, type(data))
+    data = data[0]
+    for x in range(len(data))
+        for y in range(len(data[0])):
+            if np.isnan(data[x][y]) or data[x][y] < 100:
+                print("si qv bagit ")
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
