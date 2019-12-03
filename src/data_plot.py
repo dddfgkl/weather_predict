@@ -205,18 +205,18 @@ def plot_processed_data():
         plt.suptitle('Multi_Image')
         for y in range(6):
             plt.subplot(3, 3, y+1), plt.title('predict {}'.format(y+1))
-            sc = plt.imshow(np.squeeze(data[x][y]), cmap=plt.cm.gray)
+            sc = plt.imshow(np.squeeze(data[x][y]))
             plt.axis('off')
             plt.colorbar(sc)
         plt.subplot(3, 3, 7), plt.title('Label')
         print(np.squeeze(label[x]).shape)
-        sc = plt.imshow(np.squeeze(label[x]), cmap=plt.cm.gray)
+        sc = plt.imshow(np.squeeze(label[x]))
         plt.axis('off')
         plt.colorbar(sc)
 
         plt.subplot(3, 3, 8), plt.title('Label_raw')
         print(cpc_data[3+x].shape, np.squeeze(cpc_data[3+x]).shape)
-        sc = plt.imshow(np.squeeze(cpc_data[3+x]), cmap=plt.cm.gray)
+        sc = plt.imshow(np.squeeze(cpc_data[3+x]))
         plt.axis('off')
         plt.colorbar(sc)
 
@@ -235,5 +235,5 @@ def unit_test():
 
 if __name__ == '__main__':
     # plot_center()
-    # unit_test()
-    plot_image_from_raw_data()
+    unit_test()
+    # plot_image_from_raw_data()
