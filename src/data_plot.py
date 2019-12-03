@@ -214,11 +214,13 @@ def plot_processed_data():
         plt.axis('off')
         plt.colorbar(sc)
 
-        plt.subplot(3, 3, 8), plt.title('Label_raw')
-        print(cpc_data[3+x].shape, np.squeeze(cpc_data[3+x]).shape)
-        sc = plt.imshow(np.squeeze(cpc_data[3+x]))
-        plt.axis('off')
-        plt.colorbar(sc)
+        if mean_squared_error(label[x], cpc_data[3+x]) != 0:
+            print("##### labe error #####")
+        # plt.subplot(3, 3, 8), plt.title('Label_raw')
+        # print(cpc_data[3+x].shape, np.squeeze(cpc_data[3+x]).shape)
+        # sc = plt.imshow(np.squeeze(cpc_data[3+x]))
+        # plt.axis('off')
+        # plt.colorbar(sc)
 
         plt.savefig("./outPic/Noutput_" + str(cnt) + ".png")
         cnt += 1
