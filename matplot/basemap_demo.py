@@ -7,8 +7,10 @@ def demo1():
     basic_nc_file = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
     plt.figure(figsize=(16, 16), dpi=200, )
     nc_data = nc.Dataset(basic_nc_file)
-    lons = nc_data.variables['lon2d'][:][0, :, :]
-    lats = nc_data.variables['lat2d'][:][0, :, :]
+    for x in nc_data.variables.keys()
+        print(x, nc_data[x].shape())
+    lons = nc_data.variables['lon'][:][0, :, :]
+    lats = nc_data.variables['lat'][:][0, :, :]
 
     lon_0 = lons.mean()
     lat_0 = lats.mean()
