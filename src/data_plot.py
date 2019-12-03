@@ -10,7 +10,7 @@ import calculate_method
 import h5py
 
 def plot_image_from_raw_data():
-    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1983.nc"
+    cpc_1981_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1981.nc"
     # raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_label_data.h5"
     raw_data_file_path = "/home/datanfs/macong_data/180day_bin2h5_predict_data.h5"
 
@@ -20,7 +20,7 @@ def plot_image_from_raw_data():
     print(cpc_data.shape)
     print(raw_data.shape)
 
-    raw_data = raw_data[2]
+    raw_data = raw_data[0]
 
     # 数据清洗，插值完的cpc数据中依旧有脏数据，脏数据包括nan值和极小值
     for d in range(180):
@@ -65,7 +65,7 @@ def plot_image_from_raw_data():
         # plot_single_image(cpc_data[d], "1981_cpc_{}_day.jpg".format(d))
         # plot_single_image(raw_data[d], "1981_predict_{}_day.jpg".format(d))
         plt.subplot(3, 3, d + 1), plt.title('cpc {}'.format(d + 1))
-        sc = plt.imshow(np.squeeze(cpc_data[d]), cmap=plt.cm.gray)
+        sc = plt.imshow(np.squeeze(cpc_data[d]))
         plt.axis('off')
         plt.colorbar(sc)
         cnt += 1
