@@ -15,8 +15,13 @@ dir_path = "/home/machong/PM25-work/CPC_global/temp"
 store_path = "/home/machong/PM25-work/Hind3_daily/180day_data.h5"
 store_path2 = "/home/datanfs/macong_data/100day_data.h5"
 store_file_path3 = "/home/datanfs/macong_data/180day_everyday_label_data.h5"
+
 fixed_cpc_nc_dir_path = "/home/datanfs/liutao_backup1/Hind3_label/Tmax"
+fixed_cpc_nc_prec_path = "/home/datanfs/liutao_backup1/HindFix/Hind3_label/Prec"
+single_cpc_nc_pred_path = "/home/datanfs/liutao_backup1/HindFix/Hind3_label/Prec/prec_lbl.1981.nc"
+
 trim_cpc_nc_dir_path = "/home/datanfs/macong_data/32year_180day_cpc_data_not_filled.h5"
+trim_cpc_nc_prec_path = "/home/datanfs/macong_data/32year_180day_cpc_pred_data.h5"
 # 闰年
 month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30 , 31, 30, 31]
 
@@ -157,10 +162,10 @@ def unit_test():
     print("unit test over!")
 
 def main():
-    unit_test()
+    # unit_test()
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
-    # desc_single_ncFile(fileName2)
+    desc_single_ncFile(single_cpc_nc_pred_path)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
