@@ -214,7 +214,7 @@ def plot_processed_data():
         plt.axis('off')
         plt.colorbar(sc)
 
-        if mean_squared_error(label[x], cpc_data[3+x]) != 0:
+        if mean_squared_error(np.squeeze(label[x]), cpc_data[3+x]) != 0:
             print("##### labe error #####")
         # plt.subplot(3, 3, 8), plt.title('Label_raw')
         # print(cpc_data[3+x].shape, np.squeeze(cpc_data[3+x]).shape)
