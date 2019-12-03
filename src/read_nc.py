@@ -165,7 +165,9 @@ def main():
     # unit_test()
     # data = desc_single_ncFile(fileName1, "pm25")
     # print(data)
-    desc_single_ncFile(single_cpc_nc_prec_path)
+    basic_nc_file1 = "/home/datanfs/liutao_backup1/Hind3_label/Tmax/tmax_lbl.1982.nc"
+    data = desc_single_ncFile(basic_nc_file1, 'tmax')
+    print(data.shape)
     # desc_single_nc_detail(fileName2)
     '''
     savepth = dataPath
