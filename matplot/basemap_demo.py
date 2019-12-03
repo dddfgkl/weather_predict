@@ -8,7 +8,7 @@ def demo1():
     plt.figure(figsize=(16, 16), dpi=200, )
     nc_data = nc.Dataset(basic_nc_file)
     for x in nc_data.variables.keys():
-        print(x, nc_data.variables[x].shape())
+        print(x, nc_data.variables[x][:].shape())
     lons = nc_data.variables['lon'][:][0, :, :]
     lats = nc_data.variables['lat'][:][0, :, :]
 
