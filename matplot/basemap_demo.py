@@ -14,7 +14,7 @@ def demo1():
     lat_0 = lats.mean()
     output_data = nc_data.variables['pm25'][:][0, :, :]
 
-    map = Basemap(lat_0=lat_0, lon_0=lon_0, projection='lcc', ) #Basemap类有很多属性，这里全都使用默认参数
+    map = Basemap(lat_0=lat_0, lon_0=lon_0, projection='lcc' ) #Basemap类有很多属性，这里全都使用默认参数
 
     # 画图
     map.drawcoastlines()
