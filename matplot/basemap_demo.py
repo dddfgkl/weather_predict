@@ -9,8 +9,8 @@ def demo1():
     nc_data = nc.Dataset(basic_nc_file)
     for x in nc_data.variables.keys():
         print(x)
-    lons = nc_data.variables['lon'][:][0, :, :]
-    lats = nc_data.variables['lat'][:][0, :, :]
+    lons = nc_data.variables['lon'][:]
+    lats = nc_data.variables['lat'][:]
 
     lon_0 = lons.mean()
     lat_0 = lats.mean()
