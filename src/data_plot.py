@@ -204,7 +204,7 @@ def plot_processed_data():
         plt.figure()
         plt.suptitle('Multi_Image')
         for y in range(6):
-            plt.subplot(3, 3, y+1), plt.title('Observe {}'.format(y+1))
+            plt.subplot(3, 3, y+1), plt.title('predict {}'.format(y+1))
             sc = plt.imshow(np.squeeze(data[x][y]), cmap=plt.cm.gray)
             plt.axis('off')
             plt.colorbar(sc)
