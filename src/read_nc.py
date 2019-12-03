@@ -169,7 +169,7 @@ def main():
     data = desc_single_ncFile(basic_nc_file1, 'tmax')
     print(data.shape, type(data))
     data = data[0]
-    for x in range(len(data))
+    for x in range(len(data)):
         for y in range(len(data[0])):
             if np.isnan(data[x][y]) or data[x][y] < 100:
                 print("si qv bagit ")
